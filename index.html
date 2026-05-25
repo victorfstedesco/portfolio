@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio Minimalista</title>
+    <!-- Carregando Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilo para a linha separadora horizontal */
+        .bambo-line {
+            height: 1px;
+            background-color: #d1d5db; /* Cor sólida, sem gradiente que apaga as pontas */
+            margin: 4rem 0;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-900 font-sans antialiased relative">
+
+    <!-- Fundo com Linhas Verticais Contornando (Sólidas) -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] flex justify-center">
+        <div class="w-full max-w-[1400px] h-full flex justify-between px-4 sm:px-10 opacity-40">
+            <div class="w-px h-full bg-gray-300"></div>
+            <div class="w-px h-full bg-gray-300"></div>
+        </div>
+    </div>
+
+    <!-- Header Fixo com Contato (Seguindo o Esboço) -->
+    <!-- Header Minimalista (Estilo Referência Rafaela Kreutz) -->
+    <header class="w-full max-w-[1400px] mx-auto px-4 sm:px-10 py-10 flex justify-between items-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-900 bg-transparent relative z-50">
+        <a href="#work" class="hover:underline underline-offset-4 decoration-1">Work</a>
+        <a href="#about" class="hover:underline underline-offset-4 decoration-1 hidden sm:block">About</a>
+        <span>Brazil&reg;</span>
+    </header>
+
+    <!-- Seção de Apresentação Hero -->
+    <main class="pt-8 pb-20 overflow-hidden">
+        <section class="max-w-[1400px] mx-auto px-4 sm:px-10 text-center relative">
+            
+            <div class="flex justify-center items-start pl-40 flex-col w-full">
+                <div class="flex justify-center items-center">
+                    <h1 class="text-[10vw] leading-[0.8] font-serif tracking-tighter text-gray-900 whitespace-nowrap lg:-ml-4">
+                        Victor
+                    </h1>
+                    <img class="w-60 h-60" src="image 2 [Vectorized].svg" alt="">
+                </div>
+                <h1 class="text-[10vw] pl-40 leading-[0.8] font-serif tracking-tighter text-gray-900 mb-20 whitespace-nowrap lg:-ml-4">
+                    Tedesco
+                </h1>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-24 text-left mt-24 max-w-6xl mx-auto items-start">
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] mb-6 border-b border-gray-200 pb-2 flex items-center gap-2">
+                        <img src="https://flagcdn.com/w20/br.png" alt="BR" class="w-4"> Bio
+                    </h4>
+                    <p class="text-sm text-gray-700 leading-relaxed font-normal">
+                        Designer visual e desenvolvedor com foco em identidade e direção de arte, trabalhando na construção de narrativas digitais performáticas e sistemas visuais multidisciplinares. Baseado em SC (BR).
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] mb-6 border-b border-gray-200 pb-2 flex items-center gap-2">
+                        <img src="https://flagcdn.com/w20/us.png" alt="US" class="w-4"> Expertise
+                    </h4>
+                    <p class="text-sm text-gray-700 leading-relaxed font-normal">
+                        Visual designer and developer focused on art direction, crafting performant digital narratives and multidisciplinary visual systems across contexts and languages. Based in SC (BR).
+                    </p>
+                </div>
+                <div class="flex flex-col">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] mb-6 border-b border-gray-200 pb-2">Contato</h4>
+                    <ul class="flex flex-col gap-3 font-medium">
+                        <li><a href="#" class="text-sm text-gray-900 hover:underline underline-offset-4 decoration-1">Instagram</a></li>
+                        <li><a href="#" class="text-sm text-gray-900 hover:underline underline-offset-4 decoration-1">LinkedIn</a></li>
+                        <li><a href="#" class="text-sm text-gray-900 hover:underline underline-offset-4 decoration-1">Behance</a></li>
+                        <li class="mt-4"><span class="text-sm text-gray-900">+55 48 98864-3543</span></li>
+                        <li><a href="mailto:victortedesco@gmail.com" class="text-sm text-gray-900 line-clamp-1 hover:underline underline-offset-4 decoration-1">victortedesco@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- A linha horizontal conectada aos cantos limitadores com muito mais margem -->
+        <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-10 mt-32 mb-32">
+            <div class="bambo-line !my-0"></div>
+        </div>
+
+        <!-- Seção Sobre / Experiência (Marianne Giesemann Style) -->
+        <section class="w-full max-w-[1400px] mx-auto px-4 sm:px-10 pb-24 text-center">
+            
+            <h2 class="text-3xl sm:text-4xl md:text-[3rem] tracking-tight font-serif text-gray-900 leading-tight mb-20 max-w-4xl mx-auto">
+                Building <span class="italic text-gray-500">thoughtful experiences</span> that merge functional aesthetic with robust architecture.
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto text-left gap-12 sm:gap-20 text-gray-800 text-sm">
+                <div>
+                    <h3 class="text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Approach</h3>
+                    <p class="mb-4 text-gray-500 font-serif leading-relaxed text-base italic">Every pixel serves a purpose. Every line of code scales gracefully.</p>
+                    <p class="leading-relaxed font-normal">
+                        I believe in digital craftsmanship. By removing the unnecessary, the essential becomes visible. It's about respecting the medium while constantly pushing the boundaries of what the browser can render.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Values & Process</h3>
+                    <p class="mb-4 text-gray-500 font-serif leading-relaxed text-base italic">Iteration through clarity and precise problem-solving.</p>
+                    <p class="leading-relaxed font-normal">
+                        Performance and intent move together. Through rigorous technical foundation paired with a sharp eye for visual direction, the outcomes are durable, fast, and remarkably intuitive to use.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Foto de apresentação (div em branco exigida) -->
+            <div class="mt-24 mb-10 w-full max-w-lg mx-auto aspect-[3/4] bg-gray-200 shadow-sm relative overflow-hidden group">
+                <!-- Imagem placehoder visual (remover quando inserir imagem nela) -->
+                <div class="absolute inset-0 flex items-center justify-center text-gray-400 text-xs font-mono tracking-widest">
+                    [ PORTRAIT ]
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- Container Limitador das linhas conectadas -->
+        <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-10">
+            <div class="bambo-line !my-0"></div>
+        </div>
+
+        <!-- Grid de Projetos Baseado no Print -->
+        <section class="max-w-6xl mx-auto px-6 pb-40">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <h2 class="text-sm font-semibold tracking-widest text-gray-400 uppercase mb-2">Trabalhos</h2>
+                    <h3 class="text-3xl font-medium text-gray-900">Projetos Selecionados</h3>
+                </div>
+                <a href="#" class="hidden sm:inline-block text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Ver todos os projetos →</a>
+            </div>
+
+            <!-- Grid disruptivo e desalinhado verticalmente -->
+            <!-- Usando colunas e deslocando (translate-y) as colunas impares/pares para causar o desnível -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+                
+                <!-- Coluna 1 (sobe um pouco na visão Desktop) -->
+                <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-12 transition-transform duration-500">
+                    <!-- Card 1 -->
+                    <article class="bg-[#f0f0f0] group cursor-pointer relative overflow-hidden" style="padding-bottom: 120%;">
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="App Código" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply group-hover:scale-110 transition-transform duration-700 ease-out">
+                            <h3 class="text-black text-4xl lg:text-5xl font-bold tracking-tighter mix-blend-difference z-10">APTR</h3>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="bg-[#f0c3f5] group cursor-pointer relative overflow-hidden" style="padding-bottom: 100%;">
+                        <div class="absolute inset-0 flex items-center justify-center p-8">
+                            <h3 class="text-black text-6xl md:text-7xl font-black mix-blend-overlay tracking-tighter opacity-80 group-hover:scale-110 transition-transform duration-700">FABRICA</h3>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Coluna 2 (desce um pouco para criar o desnível em relação à Coluna 1) -->
+                <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:translate-y-8 transition-transform duration-500">
+                    <!-- Card 2 (Shoulder) -->
+                    <article class="bg-[#dcdcdc] group cursor-pointer relative overflow-hidden" style="padding-bottom: 140%;">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Shoulder" class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 transition-all duration-700">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black/10">
+                                <h3 class="text-white text-3xl font-medium tracking-tight">shoulder</h3>
+                                <p class="text-white/70 text-[10px] uppercase tracking-widest mt-2">Editorial</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 5 (CAJU) -->
+                    <article class="bg-gray-100 group cursor-pointer relative overflow-hidden" style="padding-bottom: 90%;">
+                        <div class="absolute inset-0 flex items-end justify-center pb-8 p-12">
+                            <div class="w-full h-[60%] bg-yellow-400 rounded-t-[100px] shadow-xl translate-y-1/2 group-hover:translate-y-0 transition-transform duration-700"></div>
+                            <h3 class="absolute inset-x-0 bottom-4 text-center text-5xl font-serif italic text-gray-800 z-10 group-hover:-translate-y-4 transition-transform duration-500">CAJU</h3>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Coluna 3 (sobe para acompanhar o ziguezague) -->
+                <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-4 transition-transform duration-500 mt-6 md:mt-0">
+                    <!-- Card 3 (Ilustração Animal) -->
+                    <article class="bg-[#fdf9e6] group cursor-pointer relative flex items-center justify-center overflow-hidden" style="padding-bottom: 80%;">
+                        <div class="absolute inset-0 flex items-center justify-center p-8">
+                           <img src="https://images.unsplash.com/photo-1549471013-3364d7ceeaee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Animal" class="object-contain w-3/4 mix-blend-multiply opacity-50 group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                    </article>
+
+                    <!-- Card 6 (Macbook voador) -->
+                    <article class="bg-[#78bdf1] group cursor-pointer relative overflow-hidden" style="padding-bottom: 130%;">
+                        <div class="absolute inset-0 flex items-center justify-center p-8">
+                             <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Macbook" class="object-contain w-full drop-shadow-2xl group-hover:scale-110 group-hover:rotate-2 transition-all duration-700">
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Elegante -->
+    <footer class="border-t border-gray-200 bg-white/50 backdrop-blur-md pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div>
+                <h3 class="text-2xl font-semibold mb-2">Vamos conversar?</h3>
+                <p class="text-gray-500 mb-6">Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades para ser parte das suas visões.</p>
+                <a href="mailto:contato@exemplo.com" class="text-lg font-medium border-b border-gray-900 pb-1 hover:text-gray-600 transition-colors">contato@seuportfolio.com</a>
+            </div>
+            <div class="flex md:justify-end gap-12">
+                <div class="flex flex-col gap-3 text-sm">
+                    <h4 class="font-semibold text-gray-900 mb-2">Redes Sociais</h4>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 transition-colors">LinkedIn</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 transition-colors">Dribbble</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 transition-colors">GitHub</a>
+                </div>
+                <div class="flex flex-col gap-3 text-sm">
+                    <h4 class="font-semibold text-gray-900 mb-2">Navegação</h4>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 transition-colors">Projetos</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 transition-colors">Sobre</a>
+                    <a href="#header" class="text-gray-500 hover:text-gray-900 transition-colors">Início</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <p>&copy; <span id="year"></span>. Construído com HTML, JS livre e Tailwind CSS.</p>
+            <p class="mt-2 md:mt-0">Desenvolvido com excelência minimalista.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Ano automático no footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Efeito sutil no header durante o scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-sm');
+                header.classList.replace('py-4', 'py-3');
+            } else {
+                header.classList.remove('shadow-sm');
+                header.classList.replace('py-3', 'py-4');
+            }
+        });
+    </script>
+</body>
+</html>
