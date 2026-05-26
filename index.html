@@ -133,8 +133,8 @@
 
     <!-- Loader -->
     <div class="loader">
-        <div class="reveal-wrap"><span class="loader-text block text-gray-400">Deconstructing</span></div>
-        <div class="reveal-wrap"><span class="loader-text block ml-4 text-white">Ideas</span></div>
+        <div class="reveal-wrap"><span class="loader-text block text-gray-400">transformando</span></div>
+        <div class="reveal-wrap"><span class="loader-text block ml-4 text-white">ideias em realidade</span></div>
     </div>
 
     <!-- Fundo com Linhas Verticais Contornando (Sólidas) -->
@@ -146,10 +146,9 @@
     </div>
 
     <!-- Header Fixo com Contato -->
-    <header id="header" class="w-full max-w-[1700px] mx-auto px-4 sm:px-10 py-10 flex justify-between items-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-900 bg-transparent relative z-50 transition-all duration-300">
-        <div class="reveal-wrap"><a href="#work" class="hover-target hover:underline underline-offset-4 decoration-1 header-item inline-block">Work</a></div>
-        <div class="reveal-wrap"><a href="#about" class="hover-target hover:underline underline-offset-4 decoration-1 hidden sm:inline-block header-item">About</a></div>
-        <div class="reveal-wrap"><span class="header-item inline-block">Brazil&reg;</span></div>
+    <header id="header" class="max-w-[1500px] mx-auto px-4 sm:px-10 py-10 flex justify-between items-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-900 bg-transparent relative z-50 transition-all duration-300">
+        <div class="reveal-wrap"><a href="#work" class="hover-target hover:underline underline-offset-4 decoration-1 header-item inline-block">trabalhos</a></div>
+        <div class="reveal-wrap"><a href="#about" class="hover-target hover:underline underline-offset-4 decoration-1 hidden sm:inline-block header-item">contato</a></div>
     </header>
 
     <!-- Seção de Apresentação Hero -->
@@ -172,7 +171,7 @@
                 </div>
                 <div class="reveal-wrap mt-8 md:pl-40">
                     <p class="hero-subtitle text-lg md:text-2xl font-light tracking-wide text-gray-500 uppercase">
-                        Crafting digital narratives
+                        Product Designer —
                     </p>
                 </div>
             </div>
@@ -346,53 +345,53 @@
             // Reveal loader text
             .from('.loader-text', {
                 y: '100%',
-                duration: 1,
+                duration: 0.6,
                 ease: 'power4.out',
-                stagger: 0.2
+                stagger: 0.1
             })
             // Hold for a moment to let user read
             .to('.loader-text', {
                 y: '-100%',
-                duration: 0.8,
+                duration: 0.4,
                 ease: 'power4.in',
-                delay: 0.8,
-                stagger: 0.1
+                delay: 0.4,
+                stagger: 0.05
             })
             // Slide loader up and out of the way
             .to('.loader', {
                 yPercent: -100,
-                duration: 1.2,
+                duration: 0.8,
                 ease: 'expo.inOut'
-            }, "-=0.4")
+            }, "-=0.2")
             // Reveal background solid lines (growing from top)
             .from('.bg-line', {
                 scaleY: 0,
                 transformOrigin: 'top center',
-                duration: 1.5,
+                duration: 1.2,
                 ease: 'power4.inOut'
-            }, "-=0.8")
+            }, "-=0.6")
             // Header items drop down
             .from('.header-item', {
                 y: '-100%',
-                duration: 1,
+                duration: 0.8,
                 ease: 'power4.out',
                 stagger: 0.1
-            }, "-=1")
+            }, "-=0.8")
             // Hero Title reveal (sliding up from a mask, like a curtain rising)
             .from('.hero-title', {
                 y: '100%',
                 rotationZ: 1.5,
-                duration: 1.5,
+                duration: 1.2,
                 ease: 'power4.out',
-                stagger: 0.2
-            }, "-=1")
+                stagger: 0.15
+            }, "-=0.8")
             // Hero Subtitle reveal ("Crafting digital narratives")
             .from('.hero-subtitle', {
                 y: '100%',
                 opacity: 0,
-                duration: 1,
+                duration: 0.8,
                 ease: 'power4.out'
-            }, "-=1.2")
+            }, "-=0.9")
             // Vector Image spins and scales in perfectly in the middle
             .to('.hero-image', {
                 opacity: 1,
@@ -408,7 +407,6 @@
         // 2. Parallax Hero Image on scroll
         gsap.to('.hero-image', {
             y: 150,
-            rotation: 450,
             ease: "none",
             scrollTrigger: {
                 trigger: "main",
