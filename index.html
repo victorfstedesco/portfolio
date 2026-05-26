@@ -23,31 +23,122 @@
         }
     </script>
     <style>
+        /* Estilos base */
+        body {
+            cursor: none; /* Hide default cursor for custom cursor */
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #111827;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(17, 24, 39, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        
+        /* Cursor Hover States */
+        body.hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(17, 24, 39, 0.1);
+            border-color: transparent;
+        }
+
         /* Estilo para a linha separadora horizontal */
         .bambo-line {
             height: 1px;
-            background-color: #d1d5db; /* Cor sólida, sem gradiente que apaga as pontas */
+            background-color: #d1d5db;
             margin: 4rem 0;
             opacity: 0.5;
+            width: 0; /* Initial state for GSAP */
+        }
+
+        /* Utility for GSAP text reveals */
+        .reveal-wrap {
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: top;
+        }
+        
+        /* Smooth scrolling via CSS */
+        html {
+            scroll-behavior: auto;
+        }
+        
+        /* Loader - Storytelling Opening */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: #111827;
+            color: #fafafa;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2vw;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .loader {
+                font-size: 5vw;
+                flex-direction: column;
+            }
+            .loader .ml-4 {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+            body {
+                cursor: auto;
+            }
+            .cursor-dot, .cursor-outline {
+                display: none;
+            }
         }
     </style>
 </head>
 <body class="bg-[#fafafa] text-gray-900 font-sans tracking-[-0.03em] antialiased relative">
 
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Loader -->
+    <div class="loader">
+        <div class="reveal-wrap"><span class="loader-text block text-gray-400">Deconstructing</span></div>
+        <div class="reveal-wrap"><span class="loader-text block ml-4 text-white">Ideas</span></div>
+    </div>
+
     <!-- Fundo com Linhas Verticais Contornando (Sólidas) -->
     <div class="fixed inset-0 pointer-events-none z-[-1] flex justify-center">
         <div class="w-full max-w-[1700px] h-full flex justify-between px-4 sm:px-10 opacity-40">
-            <div class="w-px h-full bg-gray-300"></div>
-            <div class="w-px h-full bg-gray-300"></div>
+            <div class="w-px h-full bg-gray-300 bg-line"></div>
+            <div class="w-px h-full bg-gray-300 bg-line"></div>
         </div>
     </div>
 
-    <!-- Header Fixo com Contato (Seguindo o Esboço) -->
-    <!-- Header Minimalista (Estilo Referência Rafaela Kreutz) -->
-    <header class="w-full max-w-[1700px] mx-auto px-4 sm:px-10 py-10 flex justify-between items-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-900 bg-transparent relative z-50">
-        <a href="#work" class="hover:underline underline-offset-4 decoration-1">Work</a>
-        <a href="#about" class="hover:underline underline-offset-4 decoration-1 hidden sm:block">About</a>
-        <span>Brazil&reg;</span>
+    <!-- Header Fixo com Contato -->
+    <header id="header" class="w-full max-w-[1700px] mx-auto px-4 sm:px-10 py-10 flex justify-between items-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-900 bg-transparent relative z-50 transition-all duration-300">
+        <div class="reveal-wrap"><a href="#work" class="hover-target hover:underline underline-offset-4 decoration-1 header-item inline-block">Work</a></div>
+        <div class="reveal-wrap"><a href="#about" class="hover-target hover:underline underline-offset-4 decoration-1 hidden sm:inline-block header-item">About</a></div>
+        <div class="reveal-wrap"><span class="header-item inline-block">Brazil&reg;</span></div>
     </header>
 
     <!-- Seção de Apresentação Hero -->
@@ -56,14 +147,23 @@
         <section class="max-w-[1700px] mx-auto px-4 sm:px-10 relative min-h-[85vh] flex flex-col justify-center items-center">
             <div class="flex justify-center items-start md:pl-40 flex-col w-full">
                 <div class="flex justify-center items-center">
-                    <h1 class="text-[10vw] leading-[0.8] font-bold tracking-tighter text-gray-900 whitespace-nowrap lg:-ml-4">
-                        Victor
-                    </h1>
-                    <img class="w-40 h-40 md:w-60 md:h-60" src="image 2 [Vectorized].svg" alt="">
+                    <div class="reveal-wrap">
+                        <h1 class="hero-title text-[10vw] leading-[0.95] font-bold tracking-tighter text-gray-900 whitespace-nowrap lg:-ml-4 pt-[1.4vw] pb-[0.6vw] px-[0.5vw]">
+                            Victor
+                        </h1>
+                    </div>
+                    <img class="hero-image w-40 h-40 md:w-60 md:h-60 opacity-0" src="image 2 [Vectorized].svg" alt="">
                 </div>
-                <h1 class="text-[10vw] md:pl-40 leading-[0.8] font-bold tracking-tighter text-gray-900 whitespace-nowrap lg:-ml-4">
-                    Tedesco
-                </h1>
+                <div class="reveal-wrap md:pl-40">
+                    <h1 class="hero-title text-[10vw] leading-[0.95] font-bold tracking-tighter text-gray-900 whitespace-nowrap lg:-ml-4 pt-[0.6vw] pb-[0.6vw] px-[0.5vw]">
+                        Tedesco
+                    </h1>
+                </div>
+                <div class="reveal-wrap mt-8 md:pl-40">
+                    <p class="hero-subtitle text-lg md:text-2xl font-light tracking-wide text-gray-500 uppercase">
+                        Crafting digital narratives
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -73,124 +173,339 @@
         </div>
         
         <!-- Section: Mural de Palavras (Typography Specimen Wall) -->
-        <section class="max-w-[1700px] mx-auto px-4 sm:px-10 relative min-h-[85vh] flex flex-col justify-center items-center">
+        <section id="about" class="max-w-[1700px] mx-auto px-4 sm:px-10 relative min-h-[85vh] flex flex-col justify-center items-center">
             <div class="w-full max-w-[1500px]">
-                <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 md:gap-x-10 md:gap-y-4 uppercase text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[0.9] font-black tracking-tighter w-full text-center">
-                        <span class="text-gray-400/50 hover:blur-none hover:text-gray-900 transition-all duration-300 cursor-crosshair select-none">UX/UI DESIGNER</span>
-                        <span class="text-gray-400/50 hover:blur-none hover:text-gray-900 transition-all duration-300 cursor-crosshair select-none">FRONT-END DEV</span>
-                        <span class="text-gray-400/50 hover:blur-none hover:text-gray-900 transition-all duration-300 cursor-crosshair select-none">ART DIRECTION</span>
-                        <span class="text-gray-400/50 hover:blur-none hover:text-gray-900 transition-all duration-300 cursor-crosshair select-none">PROTOTYPING</span>
-                        <span class="text-gray-400/50 hover:blur-none hover:text-gray-900 transition-all duration-300 cursor-crosshair select-none">DESIGN SYSTEMS</span>
-                        <span class="text-gray-400/50 hover:blur-none hover:text-gray-900 transition-all duration-300 cursor-crosshair select-none">FIGMA & ADOBE</span>
-                        <span class="text-gray-400/50 hover:blur-none hover:text-gray-900 transition-all duration-300 cursor-crosshair select-none">TAILWIND CSS</span>
-                        <span class="text-gray-400/50 hover:blur-none hover:text-gray-900 transition-all duration-300 cursor-crosshair select-none">REACT / NEXT.JS</span>
-                        <span class="text-gray-400/50 hover:blur-none hover:text-gray-900 transition-all duration-300 cursor-crosshair select-none">CREATIVE CODE</span>
-                        <span class="text-gray-400/50 hover:blur-none hover:text-gray-900 transition-all duration-300 cursor-crosshair select-none">WEBFLOW & FRAMER</span>
-                    </div>
+                <div class="word-wall flex flex-wrap justify-center items-center gap-x-6 gap-y-2 md:gap-x-10 md:gap-y-4 uppercase text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[0.9] font-black tracking-tighter w-full text-center">
+                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">UX/UI DESIGNER</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">FRONT-END DEV</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">ART DIRECTION</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">PROTOTYPING</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">DESIGN SYSTEMS</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">FIGMA & ADOBE</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">TAILWIND CSS</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">REACT / NEXT.JS</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">CREATIVE CODE</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">WEBFLOW & FRAMER</span>
                 </div>
-            </section>
-            
-        </main>
-
-        <!-- Container Limitador das linhas conectadas -->
-        <div class="w-full max-w-[1700px] mx-auto px-4 sm:px-10 my-20">
-            <div class="bambo-line !my-0"></div>
-        </div>
-
-        <!-- Grid de Projetos Baseado no Print -->
-        <section class="max-w-[1500px] mx-auto px-6 pt-24 pb-40">
-            <!-- Grid disruptivo e desalinhado verticalmente -->
-            <!-- Usando colunas e deslocando (translate-y) as colunas impares/pares para causar o desnível -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
-                
-                <!-- Coluna 1 (sobe um pouco na visão Desktop) -->
-                <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-12 transition-transform duration-500">
-                    <!-- Card 1 -->
-                    <article class="bg-[#f0f0f0] group cursor-pointer relative overflow-hidden" style="padding-bottom: 120%;">
-                        <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="App Código" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply group-hover:scale-110 transition-transform duration-700 ease-out">
-                            <h3 class="text-black text-4xl lg:text-5xl font-bold tracking-tighter mix-blend-difference z-10">APTR</h3>
-                        </div>
-                    </article>
-
-                    <!-- Card 4 -->
-                    <article class="bg-[#f0c3f5] group cursor-pointer relative overflow-hidden" style="padding-bottom: 100%;">
-                        <div class="absolute inset-0 flex items-center justify-center p-8">
-                            <h3 class="text-black text-6xl md:text-7xl font-black mix-blend-overlay tracking-tighter opacity-80 group-hover:scale-110 transition-transform duration-700">FABRICA</h3>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Coluna 2 (desce um pouco para criar o desnível em relação à Coluna 1) -->
-                <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:translate-y-8 transition-transform duration-500">
-                    <!-- Card 2 (Shoulder) -->
-                    <article class="bg-[#dcdcdc] group cursor-pointer relative overflow-hidden" style="padding-bottom: 140%;">
-                        <div class="absolute inset-0">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Shoulder" class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 transition-all duration-700">
-                            <div class="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black/10">
-                                <h3 class="text-white text-3xl font-medium tracking-tight">shoulder</h3>
-                                <p class="text-white/70 text-[10px] uppercase tracking-widest mt-2">Editorial</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Card 5 (CAJU) -->
-                    <article class="bg-gray-100 group cursor-pointer relative overflow-hidden" style="padding-bottom: 90%;">
-                        <div class="absolute inset-0 flex items-end justify-center pb-8 p-12">
-                            <div class="w-full h-[60%] bg-yellow-400 rounded-t-[100px] shadow-xl translate-y-1/2 group-hover:translate-y-0 transition-transform duration-700"></div>
-                            <h3 class="absolute inset-x-0 bottom-4 text-center text-5xl font-serif italic text-gray-800 z-10 group-hover:-translate-y-4 transition-transform duration-500">CAJU</h3>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Coluna 3 (sobe para acompanhar o ziguezague) -->
-                <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-4 transition-transform duration-500 mt-6 md:mt-0">
-                    <!-- Card 3 (Ilustração Animal) -->
-                    <article class="bg-[#fdf9e6] group cursor-pointer relative flex items-center justify-center overflow-hidden" style="padding-bottom: 80%;">
-                        <div class="absolute inset-0 flex items-center justify-center p-8">
-                           <img src="https://images.unsplash.com/photo-1549471013-3364d7ceeaee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Animal" class="object-contain w-3/4 mix-blend-multiply opacity-50 group-hover:scale-110 transition-transform duration-700">
-                        </div>
-                    </article>
-
-                    <!-- Card 6 (Macbook voador) -->
-                    <article class="bg-[#78bdf1] group cursor-pointer relative overflow-hidden" style="padding-bottom: 130%;">
-                        <div class="absolute inset-0 flex items-center justify-center p-8">
-                             <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Macbook" class="object-contain w-full drop-shadow-2xl group-hover:scale-110 group-hover:rotate-2 transition-all duration-700">
-                        </div>
-                    </article>
-                </div>
-
             </div>
         </section>
+            
     </main>
+
+    <!-- Container Limitador das linhas conectadas -->
+    <div class="w-full max-w-[1700px] mx-auto px-4 sm:px-10 my-20">
+        <div class="bambo-line !my-0"></div>
+    </div>
+
+    <!-- Grid de Projetos Baseado no Print -->
+    <section id="work" class="max-w-[1500px] mx-auto px-6 pt-24 pb-40">
+        <!-- Grid disruptivo e desalinhado verticalmente -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+            
+            <!-- Coluna 1 -->
+            <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-12">
+                <!-- Card 1 -->
+                <article class="project-card hover-target bg-[#f0f0f0] group relative overflow-hidden" style="padding-bottom: 120%;">
+                    <div class="project-inner absolute inset-0 p-8 flex flex-col justify-end">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="App Código" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply group-hover:scale-110 transition-transform duration-700 ease-out">
+                        <div class="reveal-wrap"><h3 class="card-title text-black text-4xl lg:text-5xl font-bold tracking-tighter mix-blend-difference z-10">APTR</h3></div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="project-card hover-target bg-[#f0c3f5] group relative overflow-hidden" style="padding-bottom: 100%;">
+                    <div class="project-inner absolute inset-0 flex items-center justify-center p-8">
+                        <div class="reveal-wrap"><h3 class="card-title text-black text-6xl md:text-7xl font-black mix-blend-overlay tracking-tighter opacity-80 group-hover:scale-110 transition-transform duration-700">FABRICA</h3></div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Coluna 2 -->
+            <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:translate-y-8 mt-6 md:mt-0">
+                <!-- Card 2 -->
+                <article class="project-card hover-target bg-[#dcdcdc] group relative overflow-hidden" style="padding-bottom: 140%;">
+                    <div class="project-inner absolute inset-0">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Shoulder" class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black/10">
+                            <div class="reveal-wrap"><h3 class="card-title text-white text-3xl font-medium tracking-tight">shoulder</h3></div>
+                            <div class="reveal-wrap"><p class="card-title text-white/70 text-[10px] uppercase tracking-widest mt-2">Editorial</p></div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="project-card hover-target bg-gray-100 group relative overflow-hidden" style="padding-bottom: 90%;">
+                    <div class="project-inner absolute inset-0 flex items-end justify-center pb-8 p-12">
+                        <div class="w-full h-[60%] bg-yellow-400 rounded-t-[100px] shadow-xl translate-y-1/2 group-hover:translate-y-0 transition-transform duration-700"></div>
+                        <div class="reveal-wrap absolute inset-x-0 bottom-4 text-center z-10"><h3 class="card-title text-5xl font-serif italic text-gray-800 group-hover:-translate-y-4 transition-transform duration-500">CAJU</h3></div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Coluna 3 -->
+            <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-4 mt-6 md:mt-0">
+                <!-- Card 3 -->
+                <article class="project-card hover-target bg-[#fdf9e6] group relative flex items-center justify-center overflow-hidden" style="padding-bottom: 80%;">
+                    <div class="project-inner absolute inset-0 flex items-center justify-center p-8">
+                       <img src="https://images.unsplash.com/photo-1549471013-3364d7ceeaee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Animal" class="object-contain w-3/4 mix-blend-multiply opacity-50 group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="project-card hover-target bg-[#78bdf1] group relative overflow-hidden" style="padding-bottom: 130%;">
+                    <div class="project-inner absolute inset-0 flex items-center justify-center p-8">
+                         <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Macbook" class="object-contain w-full drop-shadow-2xl group-hover:scale-110 group-hover:rotate-2 transition-all duration-700">
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </section>
 
     <!-- Footer Brutalista -->
     <footer class="border-t border-gray-300 bg-transparent py-40 relative z-10 w-full overflow-hidden">
         <div class="max-w-[1700px] mx-auto px-4 sm:px-10 flex flex-col uppercase font-black tracking-tighter">
-            <a href="mailto:victortedesco@gmail.com" class="text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[0.9] text-gray-900 hover:text-transparent hover:text-stroke-2 hover:stroke-gray-900 transition-all duration-300 text-center w-full" style="-webkit-text-stroke: 1px transparent; hover:-webkit-text-stroke: 2px #111827;">
-                EMAIL
-            </a>
-            <a href="#" class="text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[0.9] text-gray-900 hover:text-transparent hover:text-stroke-2 hover:stroke-gray-900 transition-all duration-300 text-center w-full mt-4" style="-webkit-text-stroke: 1px transparent; hover:-webkit-text-stroke: 2px #111827;">
-                LINKEDIN
-            </a>
-            <a href="#" class="text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[0.9] text-gray-900 hover:text-transparent hover:text-stroke-2 hover:stroke-gray-900 transition-all duration-300 text-center w-full mt-4" style="-webkit-text-stroke: 1px transparent; hover:-webkit-text-stroke: 2px #111827;">
-                BEHANCE
-            </a>
+            <div class="reveal-wrap w-full text-center">
+                <a href="mailto:victortedesco@gmail.com" class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 hover:text-transparent hover:text-stroke-2 hover:stroke-gray-900 transition-all duration-300 inline-block w-full py-3 px-2" style="-webkit-text-stroke: 1px transparent;">
+                    EMAIL
+                </a>
+            </div>
+            <div class="reveal-wrap w-full text-center mt-4">
+                <a href="#" class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 hover:text-transparent hover:text-stroke-2 hover:stroke-gray-900 transition-all duration-300 inline-block w-full py-3 px-2" style="-webkit-text-stroke: 1px transparent;">
+                    LINKEDIN
+                </a>
+            </div>
+            <div class="reveal-wrap w-full text-center mt-4">
+                <a href="#" class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 hover:text-transparent hover:text-stroke-2 hover:stroke-gray-900 transition-all duration-300 inline-block w-full py-3 px-2" style="-webkit-text-stroke: 1px transparent;">
+                    BEHANCE
+                </a>
+            </div>
         </div>
     </footer>
 
+    <!-- GSAP Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <script>
-        // Efeito sutil no header durante o scroll
-        // (removi o trecho sobre o ano do footer, pois não há mais o ID 'year')
+        // Custom Cursor Logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        const hoverTargets = document.querySelectorAll('.hover-target');
+
+        // Check if device is touch
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+        if (!isTouchDevice) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                // Dot follows exactly
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                // Outline follows with slight delay using GSAP
+                gsap.to(cursorOutline, {
+                    left: posX,
+                    top: posY,
+                    duration: 0.15,
+                    ease: "power2.out"
+                });
+            });
+
+            hoverTargets.forEach(target => {
+                target.addEventListener('mouseenter', () => {
+                    document.body.classList.add('hovering');
+                });
+                target.addEventListener('mouseleave', () => {
+                    document.body.classList.remove('hovering');
+                });
+            });
+        }
+
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Storytelling Animation Sequence
+        const masterTl = gsap.timeline();
+
+        // 1. Loader & Intro Sequence (The "Deconstructing Ideas" Story)
+        masterTl
+            // Reveal loader text
+            .from('.loader-text', {
+                y: '100%',
+                duration: 1,
+                ease: 'power4.out',
+                stagger: 0.2
+            })
+            // Hold for a moment to let user read
+            .to('.loader-text', {
+                y: '-100%',
+                duration: 0.8,
+                ease: 'power4.in',
+                delay: 0.8,
+                stagger: 0.1
+            })
+            // Slide loader up and out of the way
+            .to('.loader', {
+                yPercent: -100,
+                duration: 1.2,
+                ease: 'expo.inOut'
+            }, "-=0.4")
+            // Reveal background solid lines (growing from top)
+            .from('.bg-line', {
+                scaleY: 0,
+                transformOrigin: 'top center',
+                duration: 1.5,
+                ease: 'power4.inOut'
+            }, "-=0.8")
+            // Header items drop down
+            .from('.header-item', {
+                y: '-100%',
+                duration: 1,
+                ease: 'power4.out',
+                stagger: 0.1
+            }, "-=1")
+            // Hero Title reveal (sliding up from a mask, like a curtain rising)
+            .from('.hero-title', {
+                y: '100%',
+                rotationZ: 1.5,
+                duration: 1.5,
+                ease: 'power4.out',
+                stagger: 0.2
+            }, "-=1")
+            // Hero Subtitle reveal ("Crafting digital narratives")
+            .from('.hero-subtitle', {
+                y: '100%',
+                opacity: 0,
+                duration: 1,
+                ease: 'power4.out'
+            }, "-=1.2")
+            // Vector Image spins and scales in perfectly in the middle
+            .to('.hero-image', {
+                opacity: 1,
+                scale: 1,
+                rotation: 360,
+                duration: 2,
+                ease: 'power3.out'
+            }, "-=1.5");
+        
+        // Initial state for hero image so it doesn't show before animation
+        gsap.set('.hero-image', { scale: 0, rotation: -180 });
+
+        // 2. Parallax Hero Image on scroll
+        gsap.to('.hero-image', {
+            y: 150,
+            rotation: 450,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "main",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // 3. Line Separator Animation (Drawing the line as we scroll)
+        gsap.utils.toArray('.bambo-line').forEach(line => {
+            gsap.to(line, {
+                width: '100%',
+                duration: 1.5,
+                ease: "power4.inOut",
+                scrollTrigger: {
+                    trigger: line,
+                    start: "top 95%",
+                    end: "top 60%",
+                    scrub: 1
+                }
+            });
+        });
+
+        // 4. "The Chaos to Order" Word Wall Story
+        // Initial state: skills are scattered and chaotic
+        gsap.set('.word-item', { 
+            opacity: 0, 
+            z: -500,
+            y: () => gsap.utils.random(-150, 150),
+            x: () => gsap.utils.random(-150, 150),
+            rotation: () => gsap.utils.random(-45, 45)
+        });
+
+        // Final state: skills snap into place forming the professional structure
+        gsap.to('.word-item', {
+            opacity: 1,
+            z: 0,
+            y: 0,
+            x: 0,
+            rotation: 0,
+            duration: 1.5,
+            ease: "back.out(1.5)",
+            stagger: 0.05,
+            scrollTrigger: {
+                trigger: ".word-wall",
+                start: "top 80%",
+            }
+        });
+
+        // 5. Projects Reveal (The Masterpieces)
+        const projects = gsap.utils.toArray('.project-card');
+        projects.forEach((project, i) => {
+            // Setup clipping path for dynamic wipe reveal
+            gsap.set(project, { clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' });
+            
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: project,
+                    start: "top 85%",
+                }
+            });
+
+            // Wipe up effect
+            tl.to(project, {
+                clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
+                duration: 1.2,
+                ease: "power4.inOut"
+            })
+            // Internal content parallax slide up
+            .from(project.querySelector('.project-inner'), {
+                scale: 1.15,
+                y: 30,
+                duration: 1.5,
+                ease: "power3.out"
+            }, "-=1")
+            // Typography slide up reveal
+            .from(project.querySelectorAll('.card-title'), {
+                y: '100%',
+                duration: 0.8,
+                ease: "power3.out",
+                stagger: 0.1
+            }, "-=1");
+        });
+
+        // 6. Footer Links Reveal
+        gsap.from('.footer-link', {
+            y: '110%',
+            rotation: 1.5,
+            duration: 1.2,
+            ease: "power4.out",
+            stagger: 0.15,
+            scrollTrigger: {
+                trigger: "footer",
+                start: "top 70%",
+            }
+        });
+
+        // Header subtle style on scroll (Glassmorphism effect)
         const header = document.getElementById('header');
         if (header) {
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 20) {
-                    header.classList.add('shadow-sm');
-                    header.classList.replace('py-4', 'py-3');
+                    header.classList.add('shadow-sm', 'bg-[#fafafa]/90', 'backdrop-blur-md');
+                    header.classList.replace('py-10', 'py-4');
                 } else {
-                    header.classList.remove('shadow-sm');
-                    header.classList.replace('py-3', 'py-4');
+                    header.classList.remove('shadow-sm', 'bg-[#fafafa]/90', 'backdrop-blur-md');
+                    header.classList.replace('py-4', 'py-10');
                 }
             });
         }
