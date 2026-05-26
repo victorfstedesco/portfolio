@@ -96,6 +96,17 @@
             letter-spacing: 0.2em;
         }
         
+        /* Word Wall Premium Focus Hover Effect */
+        .word-item {
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .word-wall:hover .word-item {
+            opacity: 0.3;
+        }
+        .word-wall .word-item:hover {
+            opacity: 1;
+        }
+        
         @media (max-width: 768px) {
             .loader {
                 font-size: 5vw;
@@ -176,16 +187,16 @@
         <section id="about" class="max-w-[1700px] mx-auto px-4 sm:px-10 relative min-h-[85vh] flex flex-col justify-center items-center">
             <div class="w-full max-w-[1500px]">
                 <div class="word-wall flex flex-wrap justify-center items-center gap-x-6 gap-y-2 md:gap-x-10 md:gap-y-4 uppercase text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[0.9] font-black tracking-tighter w-full text-center">
-                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">UX/UI DESIGNER</span>
-                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">FRONT-END DEV</span>
-                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">ART DIRECTION</span>
-                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">PROTOTYPING</span>
-                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">DESIGN SYSTEMS</span>
-                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">FIGMA & ADOBE</span>
-                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">TAILWIND CSS</span>
-                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">REACT / NEXT.JS</span>
-                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">CREATIVE CODE</span>
-                    <span class="word-item text-gray-400/50 hover-target hover:blur-none hover:text-gray-900 transition-colors duration-300 select-none inline-block">WEBFLOW & FRAMER</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:text-gray-900 select-none inline-block">UX/UI DESIGNER</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:text-gray-900 select-none inline-block">FRONT-END DEV</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:text-gray-900 select-none inline-block">ART DIRECTION</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:text-gray-900 select-none inline-block">PROTOTYPING</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:text-gray-900 select-none inline-block">DESIGN SYSTEMS</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:text-gray-900 select-none inline-block">FIGMA & ADOBE</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:text-gray-900 select-none inline-block">TAILWIND CSS</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:text-gray-900 select-none inline-block">REACT / NEXT.JS</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:text-gray-900 select-none inline-block">CREATIVE CODE</span>
+                    <span class="word-item text-gray-400/50 hover-target hover:text-gray-900 select-none inline-block">WEBFLOW & FRAMER</span>
                 </div>
             </div>
         </section>
@@ -422,26 +433,25 @@
             });
         });
 
-        // 4. "The Chaos to Order" Word Wall Story
-        // Initial state: skills are scattered and chaotic
+        // 4. Elegant Focus/Reveal Word Wall
+        // Initial state: elegant blur and slight scale/translate down
         gsap.set('.word-item', { 
             opacity: 0, 
-            z: -500,
-            y: () => gsap.utils.random(-150, 150),
-            x: () => gsap.utils.random(-150, 150),
-            rotation: () => gsap.utils.random(-45, 45)
+            y: 40,
+            scale: 0.9,
+            filter: "blur(12px)"
         });
 
-        // Final state: skills snap into place forming the professional structure
+        // Final state: smooth fade-in and focus
         gsap.to('.word-item', {
             opacity: 1,
-            z: 0,
             y: 0,
-            x: 0,
-            rotation: 0,
-            duration: 1.5,
-            ease: "back.out(1.5)",
-            stagger: 0.05,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 1.2,
+            ease: "power3.out",
+            stagger: 0.04,
+            clearProps: "opacity,filter,transform",
             scrollTrigger: {
                 trigger: ".word-wall",
                 start: "top 80%",
