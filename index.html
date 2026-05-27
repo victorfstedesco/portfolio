@@ -255,68 +255,10 @@
         <div class="bambo-line !my-0"></div>
     </div>
 
-    <!-- Grid de Projetos Baseado no Print -->
+    <!-- Grid de Projetos — renderizado via projects.json -->
     <section id="work" class="max-w-[1500px] mx-auto px-6 pt-24 pb-40">
-        <!-- Grid disruptivo e desalinhado verticalmente -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
-            
-            <!-- Coluna 1 -->
-            <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-12">
-                <!-- Card 1 -->
-                <a href="project-product.html" data-cursor="view" class="project-card hover-target bg-[#f0f0f0] group relative overflow-hidden block" style="padding-bottom: 120%;">
-                    <div class="project-inner absolute inset-0 p-8 flex flex-col justify-end">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="App Código" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply group-hover:scale-110 transition-transform duration-700 ease-out">
-                        <div class="reveal-wrap"><h3 class="card-title text-black text-4xl lg:text-5xl font-bold tracking-tighter mix-blend-difference z-10">PRODUTO</h3></div>
-                    </div>
-                </a>
-
-                <!-- Card 4 -->
-                <a href="project-landing.html" data-cursor="view" class="project-card hover-target bg-[#f0c3f5] group relative overflow-hidden block" style="padding-bottom: 100%;">
-                    <div class="project-inner absolute inset-0 flex items-center justify-center p-8">
-                        <div class="reveal-wrap"><h3 class="card-title text-black text-6xl md:text-7xl font-black mix-blend-overlay tracking-tighter opacity-80 group-hover:scale-110 transition-transform duration-700">LANDING PAGE</h3></div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Coluna 2 -->
-            <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:translate-y-8 mt-6 md:mt-0">
-                <!-- Card 2 -->
-                <a href="project-landing.html" data-cursor="view" class="project-card hover-target bg-[#dcdcdc] group relative overflow-hidden block" style="padding-bottom: 140%;">
-                    <div class="project-inner absolute inset-0">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Shoulder" class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 transition-all duration-700">
-                        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black/10">
-                            <div class="reveal-wrap"><h3 class="card-title text-white text-3xl font-medium tracking-tight">LANDING PAGE 2</h3></div>
-                            <div class="reveal-wrap"><p class="card-title text-white/70 text-[10px] uppercase tracking-widest mt-2">TEMPLATE</p></div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Card 5 -->
-                <a href="project-branding.html" data-cursor="view" class="project-card hover-target bg-gray-100 group relative overflow-hidden block" style="padding-bottom: 90%;">
-                    <div class="project-inner absolute inset-0 flex items-end justify-center pb-8 p-12">
-                        <div class="w-full h-[60%] bg-yellow-400 rounded-t-[100px] shadow-xl translate-y-1/2 group-hover:translate-y-0 transition-transform duration-700"></div>
-                        <div class="reveal-wrap absolute inset-x-0 bottom-4 text-center z-10"><h3 class="card-title text-5xl font-serif italic text-gray-800 group-hover:-translate-y-4 transition-transform duration-500">BRANDING</h3></div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Coluna 3 -->
-            <div class="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-4 mt-6 md:mt-0">
-                <!-- Card 3 -->
-                <a href="project-branding.html" data-cursor="view" class="project-card hover-target bg-[#fdf9e6] group relative flex items-center justify-center overflow-hidden block" style="padding-bottom: 80%;">
-                    <div class="project-inner absolute inset-0 flex items-center justify-center p-8">
-                       <img src="https://images.unsplash.com/photo-1549471013-3364d7ceeaee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Animal" class="object-contain w-3/4 mix-blend-multiply opacity-50 group-hover:scale-110 transition-transform duration-700">
-                    </div>
-                </a>
-
-                <!-- Card 6 -->
-                <a href="project-product.html" data-cursor="view" class="project-card hover-target bg-[#78bdf1] group relative overflow-hidden block" style="padding-bottom: 130%;">
-                    <div class="project-inner absolute inset-0 flex items-center justify-center p-8">
-                          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Macbook" class="object-contain w-full drop-shadow-2xl group-hover:scale-110 group-hover:rotate-2 transition-all duration-700">
-                    </div>
-                </a>
-            </div>
-
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+            <!-- Cards gerados dinamicamente pelo JS -->
         </div>
     </section>
 
@@ -350,7 +292,6 @@
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
         const cursorText = document.querySelector('.cursor-text');
-        const hoverTargets = document.querySelectorAll('.hover-target');
 
         // Check if device is touch
         const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
@@ -388,47 +329,29 @@
         }
 
         if (!isTouchDevice) {
-            // Set initial GSAP translation for cursor outline to ensure perfect centering when scale is animated
             gsap.set(cursorOutline, { xPercent: -50, yPercent: -50 });
 
             window.addEventListener('mousemove', (e) => {
-                const posX = e.clientX;
-                const posY = e.clientY;
-
-                // Dot follows exactly
-                cursorDot.style.left = `${posX}px`;
-                cursorDot.style.top = `${posY}px`;
-
-                // Outline follows with slight delay using GSAP
-                gsap.to(cursorOutline, {
-                    left: posX,
-                    top: posY,
-                    duration: 0.15,
-                    ease: "power2.out"
-                });
+                cursorDot.style.left = `${e.clientX}px`;
+                cursorDot.style.top  = `${e.clientY}px`;
+                gsap.to(cursorOutline, { left: e.clientX, top: e.clientY, duration: 0.15, ease: "power2.out" });
             });
 
-            hoverTargets.forEach(target => {
-                target.addEventListener('mouseenter', () => {
-                    const cursorType = target.getAttribute('data-cursor');
-                    if (cursorType === 'copy') {
-                        document.body.classList.add('hovering-copy');
-                        cursorText.textContent = 'COPIAR';
-                    } else if (cursorType === 'visit') {
-                        document.body.classList.add('hovering-visit');
-                        cursorText.textContent = 'VISITAR ↗';
-                    } else if (cursorType === 'view') {
-                        document.body.classList.add('hovering-view');
-                        cursorText.textContent = 'VER ↗';
-                    } else {
-                        document.body.classList.add('hovering');
-                    }
-                });
-
-                target.addEventListener('mouseleave', () => {
-                    document.body.classList.remove('hovering', 'hovering-copy', 'hovering-visit', 'hovering-view');
-                    cursorText.textContent = '';
-                });
+            // Event delegation — funciona para cards gerados dinamicamente
+            document.addEventListener('mouseover', (e) => {
+                const target = e.target.closest('.hover-target');
+                if (!target) return;
+                const cursorType = target.getAttribute('data-cursor');
+                document.body.classList.remove('hovering', 'hovering-copy', 'hovering-visit', 'hovering-view');
+                if (cursorType === 'copy')       { document.body.classList.add('hovering-copy');  cursorText.textContent = 'COPIAR';    }
+                else if (cursorType === 'visit') { document.body.classList.add('hovering-visit'); cursorText.textContent = 'VISITAR ↗'; }
+                else if (cursorType === 'view')  { document.body.classList.add('hovering-view');  cursorText.textContent = 'VER ↗';    }
+                else                            { document.body.classList.add('hovering'); }
+            });
+            document.addEventListener('mouseout', (e) => {
+                if (!e.target.closest('.hover-target')) return;
+                document.body.classList.remove('hovering', 'hovering-copy', 'hovering-visit', 'hovering-view');
+                cursorText.textContent = '';
             });
         }
 
@@ -458,6 +381,71 @@
                 });
             });
         }
+
+        // ─── RENDERIZA CARDS DO JSON ──────────────────────────────────────────
+        const COL_CLASSES = [
+            'flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-12',
+            'flex flex-col gap-6 md:gap-8 lg:gap-10 lg:translate-y-8 mt-6 md:mt-0',
+            'flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-4 mt-6 md:mt-0'
+        ];
+
+        function createCard(project) {
+            const a = document.createElement('a');
+            a.href = `${project.type}/?id=${project.id}`;
+            a.setAttribute('data-cursor', 'view');
+            a.className = 'project-card hover-target group relative overflow-hidden block';
+            a.style.paddingBottom = project.card.aspect;
+            a.style.backgroundColor = project.card.bgColor;
+
+            const thumbHTML = project.card.thumb
+                ? `<img src="${project.card.thumb}" alt="${project.title}"
+                        class="absolute inset-0 w-full h-full object-cover opacity-80
+                               group-hover:scale-110 transition-transform duration-700 ease-out">`
+                : '';
+
+            const typeLabel = project.type === 'branding' ? 'Branding'
+                            : project.type === 'product'  ? 'Produto Digital'
+                            : 'Landing Page';
+
+            a.innerHTML = `
+                <div class="project-inner absolute inset-0 flex flex-col justify-end p-8">
+                    ${thumbHTML}
+                    <div class="relative z-10">
+                        <span class="block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-1 mix-blend-difference">${typeLabel}</span>
+                        <div class="reveal-wrap block">
+                            <h3 class="card-title text-white text-4xl lg:text-5xl font-bold tracking-tighter mix-blend-difference">${project.title}</h3>
+                        </div>
+                    </div>
+                </div>`;
+            return a;
+        }
+
+        async function renderProjects() {
+            try {
+                const res      = await fetch('projects.json');
+                const projects = await res.json();
+                const grid     = document.getElementById('projects-grid');
+
+                const cols = COL_CLASSES.map(cls => {
+                    const div = document.createElement('div');
+                    div.className = cls;
+                    return div;
+                });
+
+                projects.forEach((project, i) => {
+                    cols[i % 3].appendChild(createCard(project));
+                });
+
+                cols.forEach(col => grid.appendChild(col));
+            } catch (err) {
+                console.error('Erro ao carregar projects.json:', err);
+            }
+
+            initGSAP(); // Inicializa GSAP depois dos cards estarem no DOM
+        }
+
+        // ─── GSAP ─────────────────────────────────────────────────────────────
+        function initGSAP() {
 
         // Initialize GSAP
         gsap.registerPlugin(ScrollTrigger);
@@ -633,12 +621,12 @@
             }
         });
 
-        // Additional window load refresh to account for dynamic image sizes
+        // Window load refresh
         window.addEventListener('load', () => {
             ScrollTrigger.refresh();
         });
 
-        // Header subtle style on scroll (Glassmorphism effect)
+        // Header style on scroll
         const header = document.getElementById('header');
         if (header) {
             window.addEventListener('scroll', () => {
@@ -651,6 +639,11 @@
                 }
             });
         }
+
+        } // ── fim initGSAP ──
+
+        // ─── START ────────────────────────────────────────────────────────────
+        renderProjects();
     </script>
 </body>
 </html>
