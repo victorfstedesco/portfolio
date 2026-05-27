@@ -28,6 +28,9 @@
             cursor: none; /* Hide default cursor for custom cursor */
             overflow-x: hidden;
         }
+        body.loading {
+            overflow: hidden;
+        }
 
         /* Custom Cursor */
         .cursor-dot, .cursor-outline {
@@ -98,10 +101,10 @@
         
         /* Word Wall Premium Focus Hover Effect */
         .word-item {
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.25s ease, color 0.25s ease;
         }
         .word-wall:hover .word-item {
-            opacity: 0.3;
+            opacity: 0.45;
         }
         .word-wall .word-item:hover {
             opacity: 1;
@@ -125,7 +128,7 @@
         }
     </style>
 </head>
-<body class="bg-[#fafafa] text-gray-900 font-sans tracking-[-0.03em] antialiased relative">
+<body class="bg-[#fafafa] text-gray-900 font-sans tracking-[-0.03em] antialiased relative loading">
 
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
@@ -361,7 +364,10 @@
             .to('.loader', {
                 yPercent: -100,
                 duration: 0.8,
-                ease: 'expo.inOut'
+                ease: 'expo.inOut',
+                onComplete: () => {
+                    document.body.classList.remove('loading');
+                }
             }, "-=0.2")
             // Reveal background solid lines (growing from top)
             .from('.bg-line', {
