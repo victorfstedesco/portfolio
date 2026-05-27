@@ -51,7 +51,10 @@
             width: 40px;
             height: 40px;
             border: 1px solid rgba(17, 24, 39, 0.5);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            transition: width 0.25s cubic-bezier(0.25, 1, 0.5, 1), 
+                        height 0.25s cubic-bezier(0.25, 1, 0.5, 1), 
+                        background-color 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+                        border-color 0.25s cubic-bezier(0.25, 1, 0.5, 1);
         }
         
         /* Cursor Hover States */
@@ -60,6 +63,36 @@
             height: 60px;
             background-color: rgba(17, 24, 39, 0.1);
             border-color: transparent;
+        }
+
+        body.hovering-copy .cursor-outline {
+            width: 90px;
+            height: 90px;
+            background-color: #111827;
+            border-color: transparent;
+        }
+        body.hovering-copy .cursor-text {
+            opacity: 1;
+        }
+
+        body.hovering-visit .cursor-outline {
+            width: 90px;
+            height: 90px;
+            background-color: #111827;
+            border-color: transparent;
+        }
+        body.hovering-visit .cursor-text {
+            opacity: 1;
+        }
+
+        /* Footer Links Style */
+        .footer-link {
+            transition: color 0.3s ease, -webkit-text-stroke 0.3s ease;
+            -webkit-text-stroke: 1px transparent;
+        }
+        .footer-link:hover {
+            color: transparent !important;
+            -webkit-text-stroke: 1.5px #111827;
         }
 
         /* Estilo para a linha separadora horizontal */
@@ -132,7 +165,9 @@
 
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <div class="cursor-outline flex items-center justify-center text-center">
+        <span class="cursor-text text-[10px] font-bold uppercase tracking-wider text-white opacity-0 transition-opacity duration-200 whitespace-nowrap pointer-events-none"></span>
+    </div>
 
     <!-- Loader -->
     <div class="loader">
@@ -279,17 +314,17 @@
     <footer class="border-t border-gray-200 bg-transparent py-40 relative z-10 w-full overflow-hidden">
         <div class="max-w-[1700px] mx-auto px-4 sm:px-10 flex flex-col uppercase font-black tracking-tighter">
             <div class="reveal-wrap w-full text-center">
-                <a href="mailto:victortedesco@gmail.com" class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 hover:text-transparent hover:text-stroke-2 hover:stroke-gray-900 transition-all duration-300 inline-block w-full py-3 px-2" style="-webkit-text-stroke: 1px transparent;">
+                <a href="mailto:victortedesco@gmail.com" data-cursor="copy" class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 inline-block w-full py-3 px-2">
                     EMAIL
                 </a>
             </div>
             <div class="reveal-wrap w-full text-center mt-4">
-                <a href="#" class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 hover:text-transparent hover:text-stroke-2 hover:stroke-gray-900 transition-all duration-300 inline-block w-full py-3 px-2" style="-webkit-text-stroke: 1px transparent;">
+                <a href="https://www.linkedin.com/in/victor-tedesco/" target="_blank" rel="noopener noreferrer" data-cursor="visit" class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 inline-block w-full py-3 px-2">
                     LINKEDIN
                 </a>
             </div>
             <div class="reveal-wrap w-full text-center mt-4">
-                <a href="#" class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 hover:text-transparent hover:text-stroke-2 hover:stroke-gray-900 transition-all duration-300 inline-block w-full py-3 px-2" style="-webkit-text-stroke: 1px transparent;">
+                <a href="https://www.behance.net/victorfstedesco" target="_blank" rel="noopener noreferrer" data-cursor="visit" class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 inline-block w-full py-3 px-2">
                     BEHANCE
                 </a>
             </div>
@@ -304,12 +339,48 @@
         // Custom Cursor Logic
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
+        const cursorText = document.querySelector('.cursor-text');
         const hoverTargets = document.querySelectorAll('.hover-target');
 
         // Check if device is touch
         const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
+        // Toast notification system
+        function showToast(message) {
+            let toast = document.getElementById('toast-notification');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toast-notification';
+                toast.className = 'fixed bottom-10 left-1/2 bg-gray-900 text-white text-xs font-semibold px-6 py-3 rounded-full shadow-lg z-[10000] opacity-0 pointer-events-none';
+                document.body.appendChild(toast);
+            }
+            toast.textContent = message;
+            
+            // Slide up & fade in
+            gsap.killTweensOf(toast);
+            gsap.fromTo(toast, 
+                { xPercent: -50, y: 20, opacity: 0 }, 
+                { xPercent: -50, y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }
+            );
+            
+            // Fade out after 2 seconds
+            gsap.to(toast, {
+                xPercent: -50,
+                y: -10,
+                opacity: 0,
+                duration: 0.4,
+                delay: 2,
+                ease: "power3.in",
+                onComplete: () => {
+                    toast.remove();
+                }
+            });
+        }
+
         if (!isTouchDevice) {
+            // Set initial GSAP translation for cursor outline to ensure perfect centering when scale is animated
+            gsap.set(cursorOutline, { xPercent: -50, yPercent: -50 });
+
             window.addEventListener('mousemove', (e) => {
                 const posX = e.clientX;
                 const posY = e.clientY;
@@ -329,10 +400,48 @@
 
             hoverTargets.forEach(target => {
                 target.addEventListener('mouseenter', () => {
-                    document.body.classList.add('hovering');
+                    const cursorType = target.getAttribute('data-cursor');
+                    if (cursorType === 'copy') {
+                        document.body.classList.add('hovering-copy');
+                        cursorText.textContent = 'COPIAR';
+                    } else if (cursorType === 'visit') {
+                        document.body.classList.add('hovering-visit');
+                        cursorText.textContent = 'VISITAR ↗';
+                    } else {
+                        document.body.classList.add('hovering');
+                    }
                 });
+
                 target.addEventListener('mouseleave', () => {
-                    document.body.classList.remove('hovering');
+                    document.body.classList.remove('hovering', 'hovering-copy', 'hovering-visit');
+                    cursorText.textContent = '';
+                });
+            });
+        }
+
+        // Copy Email to Clipboard with elegant feedback
+        const emailLink = document.querySelector('a[data-cursor="copy"]');
+        if (emailLink) {
+            emailLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = 'victortedesco@gmail.com';
+                navigator.clipboard.writeText(email).then(() => {
+                    showToast('E-mail copiado para a área de transferência!');
+                    if (!isTouchDevice && cursorText) {
+                        cursorText.textContent = 'COPIADO!';
+                        gsap.fromTo(cursorOutline, 
+                            { scale: 0.8, xPercent: -50, yPercent: -50 }, 
+                            { scale: 1, xPercent: -50, yPercent: -50, duration: 0.3, ease: "back.out(2)" }
+                        );
+                        setTimeout(() => {
+                            if (document.body.classList.contains('hovering-copy')) {
+                                cursorText.textContent = 'COPIAR';
+                            }
+                        }, 1500);
+                    }
+                }).catch(err => {
+                    console.error('Erro ao copiar e-mail: ', err);
+                    window.location.href = `mailto:${email}`;
                 });
             });
         }
@@ -367,6 +476,7 @@
                 ease: 'expo.inOut',
                 onComplete: () => {
                     document.body.classList.remove('loading');
+                    ScrollTrigger.refresh();
                 }
             }, "-=0.2")
             // Reveal background solid lines (growing from top)
@@ -506,8 +616,13 @@
             stagger: 0.15,
             scrollTrigger: {
                 trigger: "footer",
-                start: "top 70%",
+                start: "top 95%",
             }
+        });
+
+        // Additional window load refresh to account for dynamic image sizes
+        window.addEventListener('load', () => {
+            ScrollTrigger.refresh();
         });
 
         // Header subtle style on scroll (Glassmorphism effect)
