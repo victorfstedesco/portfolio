@@ -126,7 +126,6 @@
             scroll-behavior: auto;
         }
         
-        /* Loader - Storytelling Opening */
         .loader {
             position: fixed;
             inset: 0;
@@ -140,6 +139,9 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.2em;
+        }
+        .loader-text {
+            transform: translateY(100%);
         }
         
         /* Word Wall Premium Focus Hover Effect */
@@ -210,7 +212,7 @@
                             Victor
                         </h1>
                     </div>
-                    <img class="hero-image w-40 h-40 md:w-60 md:h-60 opacity-0" src="image 2 [Vectorized].svg" alt="">
+                    <img class="hero-image scale-110 w-60 h-60 md:w-60 md:h-60 pl-12 opacity-0" src="assets/minivictor.svg" alt="">
                 </div>
                 <div class="reveal-wrap md:pl-40">
                     <h1 class="hero-title text-[10vw] leading-[0.95] font-bold tracking-tighter text-gray-900 whitespace-nowrap lg:-ml-4 pt-[0.6vw] pb-[0.6vw] px-[0.5vw]">
@@ -450,38 +452,68 @@
         // Initialize GSAP
         gsap.registerPlugin(ScrollTrigger);
 
+        // Check if loading via transition
+        const isTransition = sessionStorage.getItem('pageTransition') === 'true';
+        sessionStorage.removeItem('pageTransition');
+
         // Storytelling Animation Sequence
         const masterTl = gsap.timeline();
 
-        // 1. Loader & Intro Sequence (The "Deconstructing Ideas" Story)
-        masterTl
-            // Reveal loader text
-            .from('.loader-text', {
-                y: '100%',
-                duration: 0.6,
-                ease: 'power4.out',
-                stagger: 0.1
-            })
-            // Hold for a moment to let user read
-            .to('.loader-text', {
-                y: '-100%',
-                duration: 0.4,
-                ease: 'power4.in',
-                delay: 0.4,
-                stagger: 0.05
-            })
-            // Slide loader up and out of the way
-            .to('.loader', {
-                yPercent: -100,
-                duration: 0.8,
-                ease: 'expo.inOut',
-                onComplete: () => {
-                    document.body.classList.remove('loading');
-                    ScrollTrigger.refresh();
-                }
-            }, "-=0.2")
+        if (isTransition) {
+            masterTl
+                .fromTo('.loader-text', { y: '100%' }, {
+                    y: '0%',
+                    duration: 0.4,
+                    ease: 'power3.out',
+                    stagger: 0.05
+                })
+                .to('.loader-text', {
+                    y: '-100%',
+                    duration: 0.3,
+                    ease: 'power3.in',
+                    delay: 0.5,
+                    stagger: 0.03
+                })
+                .to('.loader', {
+                    yPercent: -100,
+                    duration: 0.8,
+                    ease: 'expo.inOut',
+                    onComplete: () => {
+                        document.body.classList.remove('loading');
+                        ScrollTrigger.refresh();
+                    }
+                }, "-=0.2");
+        } else {
+            // 1. Loader & Intro Sequence (The "Deconstructing Ideas" Story)
+            masterTl
+                // Reveal loader text
+                .fromTo('.loader-text', { y: '100%' }, {
+                    y: '0%',
+                    duration: 0.6,
+                    ease: 'power4.out',
+                    stagger: 0.1
+                })
+                // Hold for a moment to let user read
+                .to('.loader-text', {
+                    y: '-100%',
+                    duration: 0.4,
+                    ease: 'power4.in',
+                    delay: 0.4,
+                    stagger: 0.05
+                })
+                // Slide loader up and out of the way
+                .to('.loader', {
+                    yPercent: -100,
+                    duration: 0.8,
+                    ease: 'expo.inOut',
+                    onComplete: () => {
+                        document.body.classList.remove('loading');
+                        ScrollTrigger.refresh();
+                    }
+                }, "-=0.2");
+        }
             // Reveal background solid lines (growing from top)
-            .from('.bg-line', {
+            masterTl.from('.bg-line', {
                 scaleY: 0,
                 transformOrigin: 'top center',
                 duration: 1.2,
@@ -641,6 +673,51 @@
         }
 
         } // ── fim initGSAP ──
+
+        // Intercepta navegação para transição fluida
+        document.addEventListener('click', (e) => {
+            const anchor = e.target.closest('a');
+            if (!anchor) return;
+            
+            const href = anchor.getAttribute('href');
+            const target = anchor.getAttribute('target');
+            
+            if (!href || 
+                href.startsWith('#') || 
+                href.startsWith('mailto:') || 
+                href.startsWith('tel:') || 
+                target === '_blank' ||
+                e.metaKey || e.ctrlKey || e.shiftKey) {
+                return;
+            }
+            
+            const isSameDomain = href.startsWith('/') || href.startsWith('.') || !href.includes('://') || href.startsWith(window.location.origin);
+            if (!isSameDomain) return;
+
+            e.preventDefault();
+            
+            sessionStorage.setItem('pageTransition', 'true');
+            document.body.classList.add('loading');
+            
+            gsap.set('.loader-text', { opacity: 0 });
+            gsap.set('.loader', { yPercent: 100 });
+            gsap.to('.loader', {
+                yPercent: 0,
+                duration: 0.8,
+                ease: 'expo.inOut',
+                onComplete: () => {
+                    window.location.href = href;
+                }
+            });
+        });
+
+        // Reseta o estado do loader se o usuário voltar/avançar no histórico do navegador (bfcache)
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                document.body.classList.remove('loading');
+                gsap.set('.loader', { yPercent: -100 });
+            }
+        });
 
         // ─── START ────────────────────────────────────────────────────────────
         renderProjects();
