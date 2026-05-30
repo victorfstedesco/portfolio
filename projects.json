@@ -60,6 +60,67 @@
       "aspect": "90%"
     }
   },
+    {
+    "id": "caju",
+    "type": "branding",
+    "title": "CAJU",
+    "loaderLine1": "identidade visual",
+    "loaderLine2": "caju tropical",
+    "tags": "BRANDING • IDENTIDADE VISUAL • EMBALAGEM",
+    "meta": {
+      "client": "Caju Tropical",
+      "role": "Brand Designer",
+      "year": "2024",
+      "tools": "Figma, Illustrator"
+    },
+    "heroImage": {
+      "src": "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      "alt": "Branding Visual Assets Showcase"
+    },
+    "sections": ["palette", "gallery", "mockupFull"],
+    "palette": [
+      { "name": "Caju Sun",     "hex": "#FCA311" },
+      { "name": "Forest Green", "hex": "#1B4332" },
+      { "name": "Cream Paper",  "hex": "#FAEDCD" }
+    ],
+    "concept": {
+      "label": "O Conceito",
+      "text": "Uma marca que une a riqueza tropical brasileira com elegância contemporânea, criando uma identidade que transmite autenticidade e sofisticação em cada ponto de contato."
+    },
+    "topics": [
+      {
+        "title": "Construção do Logotipo",
+        "text": "O símbolo foi construído a partir de uma grelha geométrica precisa, extraindo a forma do caju em um desenho minimalista e memorável que funciona em qualquer escala."
+      },
+      {
+        "title": "Aplicações da Marca",
+        "text": "A marca foi aplicada em embalagens, papelaria corporativa e materiais digitais, mantendo coerência visual e impacto em todos os ambientes."
+      }
+    ],
+    "gallery": [
+      {
+        "src": "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "alt": "Grelha de Logo",
+        "caption": "01. Grelha de construção do logotipo"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "alt": "Aplicações de Papelaria",
+        "caption": "02. Papelaria corporativa"
+      }
+    ],
+    "mockupFull": {
+      "src": "https://images.unsplash.com/photo-1517502884422-41eaaced0168?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+      "alt": "Design de Embalagens",
+      "caption": "03. Mockup de embalagens"
+    },
+    "behance": "https://www.behance.net/victorfstedesco",
+    "card": {
+      "bgColor": "#fdf9e6",
+      "thumb": "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "aspect": "90%"
+    }
+  },
   {
     "id": "aptr",
     "type": "product",
