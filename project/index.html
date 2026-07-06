@@ -214,8 +214,8 @@
                 </div>
             </div>
 
-            <!-- Behance CTA -->
-            <div class="py-8">
+            <!-- Behance CTA (só aparece se project.behance tiver um link) -->
+            <div id="behance-cta" class="py-8">
                 <a id="behance-link" href="#" target="_blank" rel="noopener noreferrer" data-cursor="visit"
                     class="hover-target inline-flex items-center gap-3 border border-gray-900 text-gray-900 text-[10px] font-bold uppercase tracking-widest px-8 py-4 hover:bg-gray-900 hover:text-white transition-colors duration-300">
                     Ver case completo no Behance ↗
@@ -490,8 +490,15 @@
                 if (val && metaFields[i]) val.textContent = project.meta?.[metaFields[i]] || '';
             });
 
+            // Botão do Behance só aparece se "behance" no JSON for uma URL (não false/null/vazio)
+            const bCta  = document.getElementById('behance-cta');
             const bLink = document.getElementById('behance-link');
-            if (bLink) bLink.href = project.behance || '#';
+            if (project.behance) {
+                if (bLink) bLink.href = project.behance;
+                if (bCta) bCta.style.display = '';
+            } else {
+                if (bCta) bCta.style.display = 'none';
+            }
 
             const heroImg = document.querySelector('.project-hero-image');
             if (heroImg) { heroImg.src = project.heroImage.src; heroImg.alt = project.heroImage.alt; }
