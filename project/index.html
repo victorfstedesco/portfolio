@@ -381,93 +381,73 @@
             });
         }
 
-        // ─── RENDERERS DE BLOCOS ─────────────────────────────────────────────
-        // Cada bloco do JSON vira uma seção. Adicionar texto/imagens ao JSON
-        // monta a página automaticamente, sem precisar de um layout por tipo de projeto.
-        const blockRenderers = {
-            text(block) {
-                return `
-                <section class="block-section max-w-[1500px] mx-auto px-6 sm:px-10 py-16">
-                    <div class="max-w-3xl">
-                        <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-6">${block.label || ''}</h2>
-                        <p class="text-lg text-gray-800 font-light leading-relaxed">${block.text || ''}</p>
+        // ─── RENDERER DE SEÇÕES ───────────────────────────────────────────────
+        // Cada projeto tem uma lista de "sections". Cada seção pode ter um
+        // título opcional e uma lista de conteúdos: parágrafos e imagens
+        // (com descrição embaixo). Monta a página conforme o JSON cresce,
+        // sem precisar de um layout fixo por tipo de projeto.
+
+        // Parágrafo: string simples, ou { "lead": "...", "text": "..." } para
+        // destacar a primeira frase em negrito (estilo citação).
+        function renderParagraph(p) {
+            const lead = typeof p === 'object' ? p.lead : '';
+            const text = typeof p === 'object' ? p.text : p;
+            return `
+                <p class="max-w-2xl text-lg text-gray-800 font-light leading-relaxed">
+                    ${lead ? `<span class="font-bold text-gray-900">${lead} </span>` : ''}${text || ''}
+                </p>`;
+        }
+
+        // Descrição de uma imagem: string simples, ou { "lead": "...", "text": "..." }.
+        function renderDescription(description) {
+            if (!description) return '';
+            const lead = typeof description === 'object' ? description.lead : '';
+            const text = typeof description === 'object' ? description.text : description;
+            return `
+                <div class="mt-4 pl-6 border-l-2 border-gray-900 max-w-2xl">
+                    <p class="text-base sm:text-lg text-gray-800 leading-relaxed font-light">
+                        ${lead ? `<span class="font-bold text-gray-900">${lead} </span>` : ''}${text || ''}
+                    </p>
+                </div>`;
+        }
+
+        function renderImage(img) {
+            return `
+                <div class="gallery-card flex flex-col">
+                    <div class="overflow-hidden bg-[#e8e8e8] relative" style="padding-bottom:${img.ratio || '56%'};">
+                        <img src="${img.src}" alt="${img.alt || ''}" data-cursor="zoom" class="gallery-img hover-target absolute inset-0 w-full h-full object-cover">
                     </div>
-                </section>`;
-            },
-            topics(block) {
-                const items = (block.items || []).map(t => `
-                    <div>
-                        <h3 class="text-2xl font-bold tracking-tight text-gray-900 mb-4">${t.title}</h3>
-                        <p class="text-gray-600 leading-relaxed font-light">${t.text}</p>
-                    </div>`).join('');
-                return `
-                <section class="block-section max-w-[1500px] mx-auto px-6 sm:px-10 py-16">
-                    ${block.label ? `<h2 class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-10">${block.label}</h2>` : ''}
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">${items}</div>
-                </section>`;
-            },
-            palette(block) {
-                const items = (block.items || []).map(c => `
-                    <div class="color-swatch flex flex-col gap-4">
-                        <div class="h-40 w-full shadow-inner" style="background-color:${c.hex}"></div>
-                        <div>
-                            <p class="font-bold text-gray-900">${c.name}</p>
-                            <p class="text-xs text-gray-400">${c.hex}</p>
-                        </div>
-                    </div>`).join('');
-                return `
-                <section class="block-section max-w-[1500px] mx-auto px-6 sm:px-10 py-16">
-                    <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-10">${block.label || 'Paleta de Cores'}</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">${items}</div>
-                </section>`;
-            },
-            metrics(block) {
-                const items = (block.items || []).map((m, i) => `
-                    <div class="metric-card${i === 1 ? ' border-y md:border-y-0 md:border-x border-gray-200 py-6 md:py-0' : ''}">
-                        <p class="text-5xl md:text-6xl font-black text-gray-900 mb-2">${m.value}</p>
-                        <p class="text-xs uppercase text-gray-400 tracking-wider">${m.label}</p>
-                    </div>`).join('');
-                return `
-                <section class="block-section max-w-[1500px] mx-auto px-6 sm:px-10 py-16">
-                    <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-10 text-center md:text-left">${block.label || 'Métricas'}</h2>
-                    <div class="border-t border-b border-gray-200 py-12">
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">${items}</div>
-                    </div>
-                </section>`;
-            },
-            gallery(block) {
-                const items = (block.items || []).map((g, i) => `
-                    <div class="gallery-card flex flex-col gap-4${i % 2 === 1 ? ' md:translate-y-16' : ''}">
-                        <div class="overflow-hidden bg-[#e8e8e8] relative" style="padding-bottom:75%;">
-                            <img src="${g.src}" alt="${g.alt || ''}" data-cursor="zoom" class="gallery-img hover-target absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        ${g.caption ? `<span class="text-xs uppercase text-gray-400 tracking-wider">${g.caption}</span>` : ''}
-                    </div>`).join('');
-                return `
-                <section class="block-section max-w-[1500px] mx-auto px-6 sm:px-10 py-12">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">${items}</div>
-                </section>`;
-            },
-            image(block) {
-                return `
-                <section class="block-section max-w-[1500px] mx-auto px-6 sm:px-10 py-16">
-                    <div class="gallery-card flex flex-col gap-4">
-                        <div class="overflow-hidden bg-[#e8e8e8] relative" style="padding-bottom:45%;">
-                            <img src="${block.src}" alt="${block.alt || ''}" data-cursor="zoom" class="gallery-img hover-target absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        ${block.caption ? `<span class="text-xs uppercase text-gray-400 tracking-wider">${block.caption}</span>` : ''}
-                    </div>
-                </section>`;
-            }
+                    ${renderDescription(img.description)}
+                </div>`;
+        }
+
+        const contentRenderers = {
+            paragraph: item => renderParagraph(item),
+            image: item => renderImage(item),
+            images: item => `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                    ${(item.items || []).map(renderImage).join('')}
+                </div>`
         };
 
-        function renderBlocks(project) {
+        function renderSection(section) {
+            const contentHtml = (section.content || []).map(item => {
+                const renderer = contentRenderers[item.type];
+                return renderer ? renderer(item) : '';
+            }).join('<div class="h-8"></div>');
+
+            return `
+                <section class="block-section max-w-[1500px] mx-auto px-6 sm:px-10 py-16">
+                    ${section.title ? `<h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 mb-8">${section.title}</h2>` : ''}
+                    <div class="flex flex-col gap-8">${contentHtml}</div>
+                </section>`;
+        }
+
+        function renderSections(project) {
             const container = document.getElementById('blocks-container');
-            const html = (project.blocks || []).map((block, i) => {
-                const renderer = blockRenderers[block.type];
-                if (!renderer) return '';
+            const html = (project.sections || []).map((section, i) => {
                 const divider = i > 0 ? `<div class="w-full max-w-[1700px] mx-auto px-6 sm:px-10"><div class="bambo-line !my-0"></div></div>` : '';
-                return divider + renderer(block);
+                return divider + renderSection(section);
             }).join('');
             container.innerHTML = html;
         }
@@ -516,7 +496,7 @@
             const heroImg = document.querySelector('.project-hero-image');
             if (heroImg) { heroImg.src = project.heroImage.src; heroImg.alt = project.heroImage.alt; }
 
-            renderBlocks(project);
+            renderSections(project);
 
             // Próximo projeto
             const idx = all.findIndex(p => p.id === project.id);

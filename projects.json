@@ -21,54 +21,65 @@
       "bgColor": "#fdf9e6",
       "thumb": "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     },
-    "blocks": [
+    "sections": [
       {
-        "type": "text",
-        "label": "O Conceito",
-        "text": "Uma marca que une a riqueza tropical brasileira com elegância contemporânea, criando uma identidade que transmite autenticidade e sofisticação em cada ponto de contato."
+        "title": "O Conceito",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Uma marca que une a riqueza tropical brasileira com elegância contemporânea, criando uma identidade que transmite autenticidade e sofisticação em cada ponto de contato."
+          }
+        ]
       },
       {
-        "type": "topics",
-        "items": [
+        "title": "Construção da Marca",
+        "content": [
           {
-            "title": "Construção do Logotipo",
-            "text": "O símbolo foi construído a partir de uma grelha geométrica precisa, extraindo a forma do caju em um desenho minimalista e memorável que funciona em qualquer escala."
+            "type": "paragraph",
+            "lead": "Do símbolo à grelha.",
+            "text": "O logotipo foi construído a partir de uma grelha geométrica precisa, extraindo a forma do caju em um desenho minimalista e memorável que funciona em qualquer escala."
           },
           {
-            "title": "Aplicações da Marca",
+            "type": "images",
+            "items": [
+              {
+                "src": "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "alt": "Grelha de Logo",
+                "ratio": "75%",
+                "description": "Grelha de construção do logotipo."
+              },
+              {
+                "src": "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "alt": "Aplicações de Papelaria",
+                "ratio": "75%",
+                "description": "Aplicação em papelaria corporativa."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "lead": "O conceito por trás da marca.",
+            "text": "Caju Tropical é uma marca que celebra a brasilidade com elegância e sofisticação. O nome remete ao fruto tropical, enquanto a identidade visual transmite a essência vibrante e acolhedora do Brasil."
+          }
+        ]
+      },
+      {
+        "content": [
+          {
+            "type": "paragraph",
             "text": "A marca foi aplicada em embalagens, papelaria corporativa e materiais digitais, mantendo coerência visual e impacto em todos os ambientes."
-          }
-        ]
-      },
-      {
-        "type": "palette",
-        "label": "Paleta de Cores Institucional",
-        "items": [
-          { "name": "Caju Sun",     "hex": "#FCA311" },
-          { "name": "Forest Green", "hex": "#1B4332" },
-          { "name": "Cream Paper",  "hex": "#FAEDCD" }
-        ]
-      },
-      {
-        "type": "gallery",
-        "items": [
-          {
-            "src": "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "alt": "Grelha de Logo",
-            "caption": "01. Grelha de construção do logotipo"
           },
           {
-            "src": "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "alt": "Aplicações de Papelaria",
-            "caption": "02. Papelaria corporativa"
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1517502884422-41eaaced0168?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+            "alt": "Design de Embalagens",
+            "ratio": "45%",
+            "description": {
+              "lead": "Do conceito à prateleira.",
+              "text": "A embalagem final equilibra impacto visual e função, garantindo destaque no ponto de venda sem perder a leitura da marca."
+            }
           }
         ]
-      },
-      {
-        "type": "image",
-        "src": "https://images.unsplash.com/photo-1517502884422-41eaaced0168?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-        "alt": "Design de Embalagens",
-        "caption": "03. Mockup de embalagens"
       }
     ]
   },
@@ -94,45 +105,60 @@
       "bgColor": "#f0f0f0",
       "thumb": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     },
-    "blocks": [
+    "sections": [
       {
-        "type": "text",
-        "label": "O Produto",
-        "text": "Uma plataforma de gestão de dados que simplifica fluxos complexos através de uma interface intuitiva e um design system robusto, reduzindo a curva de aprendizado em 60%."
+        "title": "O Produto",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Uma plataforma de gestão de dados que simplifica fluxos complexos através de uma interface intuitiva e um design system robusto, reduzindo a curva de aprendizado em 60%."
+          }
+        ]
       },
       {
-        "type": "topics",
-        "items": [
+        "title": "Estratégia de UX",
+        "content": [
           {
-            "title": "Estratégia de UX",
+            "type": "paragraph",
             "text": "A experiência foi mapeada a partir de pesquisas com usuários, identificando os principais gargalos nos fluxos de gestão e priorizando ações de alto impacto."
           },
           {
-            "title": "Design System",
-            "text": "Construção de um sistema de componentes escalável, com tokens de design e documentação completa para garantir consistência entre design e desenvolvimento."
+            "type": "images",
+            "items": [
+              {
+                "src": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "alt": "Interface Web",
+                "ratio": "75%",
+                "description": "Dashboard principal."
+              },
+              {
+                "src": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "alt": "Versão Mobile",
+                "ratio": "75%",
+                "description": "Versão mobile responsiva."
+              }
+            ]
           }
         ]
       },
       {
-        "type": "gallery",
-        "items": [
+        "title": "Design System",
+        "content": [
           {
-            "src": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "alt": "Interface Web",
-            "caption": "01. Dashboard principal"
+            "type": "paragraph",
+            "text": "Construção de um sistema de componentes escalável, com tokens de design e documentação completa para garantir consistência entre design e desenvolvimento."
           },
           {
-            "src": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "alt": "Versão Mobile",
-            "caption": "02. Versão mobile responsiva"
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+            "alt": "Componentes de UI",
+            "ratio": "45%",
+            "description": {
+              "lead": "Consistência em escala.",
+              "text": "A biblioteca de componentes reduziu o retrabalho entre design e desenvolvimento em todo o produto."
+            }
           }
         ]
-      },
-      {
-        "type": "image",
-        "src": "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-        "alt": "Componentes de UI",
-        "caption": "03. Design System — Biblioteca de componentes"
       }
     ]
   },
@@ -158,62 +184,67 @@
       "bgColor": "#dcdcdc",
       "thumb": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
     },
-    "blocks": [
+    "sections": [
       {
-        "type": "text",
-        "label": "O Projeto",
-        "text": "Uma landing page de alta conversão para uma plataforma SaaS B2B, com foco em velocidade de carregamento e clareza de proposta de valor desde o primeiro scroll."
-      },
-      {
-        "type": "metrics",
-        "label": "Métricas alcançadas",
-        "items": [
-          { "value": "94.2%", "label": "Taxa de satisfação dos usuários" },
-          { "value": "98/100", "label": "Google PageSpeed Score" },
-          { "value": "12K+",  "label": "Leads gerados no primeiro mês" }
+        "title": "O Projeto",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Uma landing page de alta conversão para uma plataforma SaaS B2B, com foco em velocidade de carregamento e clareza de proposta de valor desde o primeiro scroll."
+          }
         ]
       },
       {
-        "type": "topics",
-        "items": [
+        "title": "Resultados",
+        "content": [
+          { "type": "paragraph", "lead": "94.2%", "text": "taxa de satisfação dos usuários." },
+          { "type": "paragraph", "lead": "98/100", "text": "no Google PageSpeed Score." },
+          { "type": "paragraph", "lead": "12K+", "text": "leads gerados no primeiro mês." }
+        ]
+      },
+      {
+        "title": "Estratégia Visual e Performance",
+        "content": [
           {
-            "title": "Estratégia Visual",
-            "text": "A hierarquia visual foi projetada para guiar o olhar do visitante da proposta de valor ao CTA principal em menos de 3 segundos de leitura."
+            "type": "paragraph",
+            "text": "A hierarquia visual foi projetada para guiar o olhar do visitante da proposta de valor ao CTA principal em menos de 3 segundos de leitura. Micro-animações estratégicas aumentam o engajamento sem prejudicar a performance, mantendo o Lighthouse Score acima de 95."
           },
           {
-            "title": "Interações e Motion",
-            "text": "Micro-animações estratégicas aumentam o engajamento sem prejudicar a performance, mantendo o Lighthouse Score acima de 95."
-          },
+            "type": "images",
+            "items": [
+              {
+                "src": "https://images.unsplash.com/photo-1547119944-472561214a11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "alt": "Página Responsiva",
+                "ratio": "75%",
+                "description": "Design responsivo — mobile first."
+              },
+              {
+                "src": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "alt": "Detalhes Visuais",
+                "ratio": "75%",
+                "description": "Detalhes visuais e tipografia."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "content": [
           {
-            "title": "Otimização de Conversão",
+            "type": "paragraph",
             "text": "Posicionamento de CTAs baseado em heatmaps e testes A/B, resultando em um aumento de 34% na taxa de conversão em 60 dias."
           },
           {
-            "title": "Performance Técnica",
-            "text": "Otimização de assets, lazy loading e escolha criteriosa de tecnologia resultaram em 98/100 no Google PageSpeed Insights."
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+            "alt": "Hero Close-up",
+            "ratio": "45%",
+            "description": {
+              "lead": "Hero section.",
+              "text": "Close-up da seção principal, otimizada para comunicar o produto em menos de 5 segundos."
+            }
           }
         ]
-      },
-      {
-        "type": "gallery",
-        "items": [
-          {
-            "src": "https://images.unsplash.com/photo-1547119944-472561214a11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "alt": "Página Responsiva",
-            "caption": "01. Design responsivo — mobile first"
-          },
-          {
-            "src": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            "alt": "Detalhes Visuais",
-            "caption": "02. Detalhes visuais e tipografia"
-          }
-        ]
-      },
-      {
-        "type": "image",
-        "src": "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-        "alt": "Hero Close-up",
-        "caption": "03. Hero section — close-up"
       }
     ]
   }
