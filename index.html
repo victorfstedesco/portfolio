@@ -189,14 +189,14 @@
 
     <!-- Fundo com Linhas Verticais Contornando (Sólidas) -->
     <div class="fixed inset-0 pointer-events-none z-[-1] flex justify-center">
-        <div class="w-full max-w-[1700px] h-full flex justify-between px-4 sm:px-10 opacity-40">
+        <div class="w-full max-w-[1700px] h-full flex justify-between px-6 sm:px-10 opacity-40">
             <div class="w-px h-full bg-gray-300 bg-line"></div>
             <div class="w-px h-full bg-gray-300 bg-line"></div>
         </div>
     </div>
 
     <!-- Header Fixo com Contato -->
-    <header id="header" class="max-w-[1500px] mx-auto px-4 sm:px-10 py-10 flex justify-between items-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-900 bg-transparent relative z-50 transition-all duration-300">
+    <header id="header" class="max-w-[1500px] mx-auto px-6 sm:px-10 py-10 flex justify-between items-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-900 bg-transparent relative z-50 transition-all duration-300">
         <div class="reveal-wrap"><a href="#work" class="hover-target hover:underline underline-offset-4 decoration-1 header-item inline-block">trabalhos</a></div>
         <div class="reveal-wrap"><a href="#about" class="hover-target hover:underline underline-offset-4 decoration-1 hidden sm:inline-block header-item">contato</a></div>
     </header>
@@ -204,7 +204,7 @@
     <!-- Seção de Apresentação Hero -->
     <main class="pt-8 pb-20 overflow-hidden">
         <!-- Hero: Nome -->
-        <section class="max-w-[1700px] mx-auto px-4 sm:px-10 relative min-h-[85vh] flex flex-col justify-center items-center">
+        <section class="max-w-[1700px] mx-auto px-6 sm:px-10 relative min-h-[85vh] flex flex-col justify-center items-center">
             <div class="flex justify-center items-start md:pl-40 flex-col w-full">
                 <div class="flex justify-center items-center">
                     <div class="reveal-wrap">
@@ -228,12 +228,12 @@
         </section>
 
         <!-- Container Limitador das linhas conectadas -->
-        <div class="w-full max-w-[1700px] mx-auto px-4 sm:px-10 my-20">
+        <div class="w-full max-w-[1700px] mx-auto px-6 sm:px-10 my-20">
             <div class="bambo-line !my-0"></div>
         </div>
         
         <!-- Section: Mural de Palavras (Typography Specimen Wall) -->
-        <section id="about" class="max-w-[1700px] mx-auto px-4 sm:px-10 relative min-h-[85vh] flex flex-col justify-center items-center">
+        <section id="about" class="max-w-[1700px] mx-auto px-6 sm:px-10 relative min-h-[85vh] flex flex-col justify-center items-center">
             <div class="w-full max-w-[1500px]">
                 <div class="word-wall flex flex-wrap justify-center items-center gap-x-6 gap-y-2 md:gap-x-10 md:gap-y-4 uppercase text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[0.9] font-black tracking-tighter w-full text-center">
                     <span class="word-item text-gray-400/50 hover-target hover:text-gray-900 select-none inline-block">UX/UI DESIGNER</span>
@@ -253,20 +253,20 @@
     </main>
 
     <!-- Container Limitador das linhas conectadas -->
-    <div class="w-full max-w-[1700px] mx-auto px-4 sm:px-10 my-20">
+    <div class="w-full max-w-[1700px] mx-auto px-6 sm:px-10 my-20">
         <div class="bambo-line !my-0"></div>
     </div>
 
-    <!-- Grid de Projetos — renderizado via projects.json -->
-    <section id="work" class="max-w-[1500px] mx-auto px-6 pt-24 pb-40">
-        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+    <!-- Lista de Projetos — renderizada via projects.json -->
+    <section id="work" class="max-w-[1100px] mx-auto px-6 sm:px-10 pt-24 pb-40">
+        <div id="projects-list" class="flex flex-col gap-8 md:gap-10">
             <!-- Cards gerados dinamicamente pelo JS -->
         </div>
     </section>
 
     <!-- Footer Brutalista -->
     <footer class="border-t border-gray-200 bg-transparent py-40 relative z-10 w-full overflow-hidden">
-        <div class="max-w-[1700px] mx-auto px-4 sm:px-10 flex flex-col uppercase font-black tracking-tighter">
+        <div class="max-w-[1700px] mx-auto px-6 sm:px-10 flex flex-col uppercase font-black tracking-tighter">
             <div class="reveal-wrap w-full text-center">
                 <a href="mailto:victortedesco@gmail.com" data-cursor="copy" class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 inline-block w-full py-3 px-2">
                     EMAIL
@@ -384,38 +384,28 @@
             });
         }
 
-        // ─── RENDERIZA CARDS DO JSON ──────────────────────────────────────────
-        const COL_CLASSES = [
-            'flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-12',
-            'flex flex-col gap-6 md:gap-8 lg:gap-10 lg:translate-y-8 mt-6 md:mt-0',
-            'flex flex-col gap-6 md:gap-8 lg:gap-10 lg:-translate-y-4 mt-6 md:mt-0'
-        ];
-
+        // ─── RENDERIZA LISTA DE PROJETOS DO JSON ──────────────────────────────
         function createCard(project) {
             const a = document.createElement('a');
-            a.href = `${project.type}/?id=${project.id}`;
+            a.href = `project/?id=${project.id}`;
             a.setAttribute('data-cursor', 'view');
-            a.className = 'project-card hover-target group relative overflow-hidden block';
-            a.style.paddingBottom = project.card.aspect;
-            a.style.backgroundColor = project.card.bgColor;
+            a.className = 'project-card hover-target group relative block w-full overflow-hidden';
+            a.style.paddingBottom = '56%';
+            a.style.backgroundColor = project.card?.bgColor || '#eee';
 
-            const thumbHTML = project.card.thumb
+            const thumbHTML = project.card?.thumb
                 ? `<img src="${project.card.thumb}" alt="${project.title}"
-                        class="absolute inset-0 w-full h-full object-cover opacity-80
-                               group-hover:scale-110 transition-transform duration-700 ease-out">`
+                        class="absolute inset-0 w-full h-full object-cover
+                               group-hover:scale-105 transition-transform duration-700 ease-out">`
                 : '';
 
-            const typeLabel = project.type === 'branding' ? 'Branding'
-                            : project.type === 'product'  ? 'Produto Digital'
-                            : 'Landing Page';
-
             a.innerHTML = `
-                <div class="project-inner absolute inset-0 flex flex-col justify-end p-8">
+                <div class="project-inner absolute inset-0">
                     ${thumbHTML}
-                    <div class="relative z-10">
-                        <span class="block text-[10px] font-bold uppercase tracking-widest text-white/70 mb-1 mix-blend-difference">${typeLabel}</span>
-                        <div class="reveal-wrap block">
-                            <h3 class="card-title text-white text-4xl lg:text-5xl font-bold tracking-tighter mix-blend-difference">${project.title}</h3>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 flex flex-col justify-end p-6 sm:p-10">
+                        <div class="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                            <span class="block text-[10px] font-bold uppercase tracking-widest text-white/80 mb-1">${project.tags}</span>
+                            <h3 class="card-title text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter">${project.title}</h3>
                         </div>
                     </div>
                 </div>`;
@@ -425,20 +415,10 @@
         async function renderProjects() {
             try {
                 const res      = await fetch('projects.json');
-                const projects = await res.json();
-                const grid     = document.getElementById('projects-grid');
+                const projects = (await res.json()).slice(0, 6);
+                const list     = document.getElementById('projects-list');
 
-                const cols = COL_CLASSES.map(cls => {
-                    const div = document.createElement('div');
-                    div.className = cls;
-                    return div;
-                });
-
-                projects.forEach((project, i) => {
-                    cols[i % 3].appendChild(createCard(project));
-                });
-
-                cols.forEach(col => grid.appendChild(col));
+                projects.forEach(project => list.appendChild(createCard(project)));
             } catch (err) {
                 console.error('Erro ao carregar projects.json:', err);
             }
@@ -606,37 +586,26 @@
         });
 
         // 5. Projects Reveal (The Masterpieces)
-        const projects = gsap.utils.toArray('.project-card');
-        projects.forEach((project, i) => {
-            // Setup clipping path for dynamic wipe reveal
-            gsap.set(project, { clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' });
-            
+        gsap.utils.toArray('.project-card').forEach(card => {
+            gsap.set(card, { clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' });
+
             let tl = gsap.timeline({
                 scrollTrigger: {
-                    trigger: project,
+                    trigger: card,
                     start: "top 85%",
                 }
             });
 
-            // Wipe up effect
-            tl.to(project, {
+            tl.to(card, {
                 clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
                 duration: 1.2,
                 ease: "power4.inOut"
             })
-            // Internal content parallax slide up
-            .from(project.querySelector('.project-inner'), {
+            .from(card.querySelector('.project-inner'), {
                 scale: 1.15,
                 y: 30,
                 duration: 1.5,
                 ease: "power3.out"
-            }, "-=1")
-            // Typography slide up reveal
-            .from(project.querySelectorAll('.card-title'), {
-                y: '100%',
-                duration: 0.8,
-                ease: "power3.out",
-                stagger: 0.1
             }, "-=1");
         });
 
