@@ -190,7 +190,7 @@
 
     <!-- Header -->
     <header id="header"
-        class="max-w-[1500px] mx-auto px-6 sm:px-10 py-10 flex justify-between items-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-900 bg-transparent relative z-50 transition-all duration-300">
+        class="max-w-[1500px] mx-auto px-8 sm:px-10 py-10 flex justify-between items-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-900 bg-transparent relative z-50 transition-all duration-300">
         <div class="reveal-wrap"><a href="../"
                 class="hover-target hover:underline underline-offset-4 decoration-1 header-item inline-block">← Voltar
                 para o início</a></div>
@@ -202,7 +202,7 @@
     <main class="pt-8 overflow-hidden">
 
         <!-- Hero -->
-        <section class="max-w-[1500px] mx-auto px-6 flex justify-between items-center sm:px-10 pt-12">
+        <section class="max-w-[1500px] mx-auto px-8 flex justify-between items-center sm:px-10 pt-12">
             <div class="flex flex-col gap-y-2">
                 <div class="reveal-wrap mb-4">
                     <span class="project-tag text-xs font-semibold uppercase tracking-widest text-gray-400 block"></span>
@@ -224,7 +224,7 @@
         </section>
 
         <!-- Ficha Técnica -->
-        <div class="w-full max-w-[1700px] mx-auto px-6 sm:px-10 mt-12">
+        <div class="w-full max-w-[1700px] mx-auto px-8 sm:px-10 mt-12">
             <div class="border-t border-b border-gray-200 py-10">
                 <div class="max-w-[1500px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
                     <div class="meta-item">
@@ -248,7 +248,7 @@
         </div>
 
         <!-- Hero Image -->
-        <section class="max-w-[1700px] mx-auto px-6 sm:px-10 pb-24">
+        <section class="max-w-[1700px] mx-auto px-7 sm:px-10 pb-24">
             <div class="project-hero-image-wrap overflow-hidden bg-gray-100 w-full relative"
                 style="padding-bottom:50%;">
                 <img src="" alt="" data-cursor="zoom"
@@ -268,7 +268,7 @@
         <section class="next-project-section hover-target w-full bg-transparent border-b border-gray-200 py-32"
             data-cursor="view">
             <a id="next-project-link" href="#"
-                class="max-w-[1500px] mx-auto px-6 sm:px-10 flex flex-col items-center text-center group">
+                class="max-w-[1500px] mx-auto px-8 sm:px-10 flex flex-col items-center text-center group">
                 <span
                     class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-gray-200 transition-colors duration-500 mb-6">Próximo
                     Projeto</span>
@@ -282,7 +282,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-gray-200 bg-transparent py-40 relative z-10 w-full overflow-hidden">
-        <div class="max-w-[1700px] mx-auto px-6 sm:px-10 flex flex-col uppercase font-black tracking-tighter">
+        <div class="max-w-[1700px] mx-auto px-8 sm:px-10 flex flex-col uppercase font-black tracking-tighter">
             <div class="reveal-wrap w-full text-center">
                 <a href="mailto:victortedesco@gmail.com" data-cursor="copy"
                     class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 inline-block w-full py-3 px-2">EMAIL</a>
@@ -393,7 +393,7 @@
             const lead = typeof p === 'object' ? p.lead : '';
             const text = typeof p === 'object' ? p.text : p;
             return `
-                <p class="max-w-2xl text-lg text-gray-800 font-light leading-relaxed">
+                <p class="max-w-2xl px-1 sm:px-0 text-lg text-gray-800 font-light leading-relaxed">
                     ${lead ? `<span class="font-bold text-gray-900">${lead} </span>` : ''}${text || ''}
                 </p>`;
         }
@@ -437,8 +437,8 @@
             }).join('<div class="h-8"></div>');
 
             return `
-                <section class="block-section max-w-[1500px] mx-auto px-6 sm:px-10 py-16">
-                    ${section.title ? `<h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 mb-8">${section.title}</h2>` : ''}
+                <section class="block-section max-w-[1500px] mx-auto px-7 sm:px-10 py-16">
+                    ${section.title ? `<h2 class="px-1 sm:px-0 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 mb-8">${section.title}</h2>` : ''}
                     <div class="flex flex-col gap-8">${contentHtml}</div>
                 </section>`;
         }
