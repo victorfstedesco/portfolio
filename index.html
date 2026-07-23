@@ -199,7 +199,7 @@
     <!-- Header Fixo com Contato -->
     <header id="header" class="max-w-[1500px] mx-auto px-8 sm:px-10 py-10 flex justify-between items-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-900 bg-transparent relative z-50 transition-all duration-300">
         <div class="reveal-wrap"><a href="#work" class="hover-target hover:underline underline-offset-4 decoration-1 header-item inline-block">trabalhos</a></div>
-        <div class="reveal-wrap"><a href="#about" class="hover-target hover:underline underline-offset-4 decoration-1 hidden sm:inline-block header-item">contato</a></div>
+        <div class="reveal-wrap"><a href="#contact" class="hover-target hover:underline underline-offset-4 decoration-1 hidden sm:inline-block header-item">contato</a></div>
     </header>
 
     <!-- Seção de Apresentação Hero -->
@@ -237,7 +237,7 @@
 
         <!-- Seção Sobre: texto revela de claro para sólido ao entrar (sem travar o scroll) -->
         <section id="intro" class="max-w-[1500px] mx-auto px-8 sm:px-10 min-h-[80vh] flex items-center justify-center py-32 sm:py-48">
-            <p class="intro-text max-w-[1150px] text-center text-[6.5vw] sm:text-[4.5vw] md:text-[3.4rem] lg:text-[4rem] leading-[1.15] font-bold tracking-tight">Oi, eu sou o Victor ✌️ product designer apaixonado por resolver problemas. Pego ideias complicadas e transformo em produtos simples, memoráveis e fáceis de amar 🤗</p>
+            <p class="intro-text max-w-[80%] text-left text-[4vw] sm:text-[3.5rem] md:text-[3.5rem] lg:text-[3.6rem] leading-[1.35] font-semibold tracking-tight">Sou product designer e transformo cenários complexos em experiências claras, memoráveis e fáceis de usar 😃</p>
         </section>
 
         <!-- Container Limitador das linhas conectadas -->
@@ -289,7 +289,7 @@
     </section>
 
     <!-- Footer Brutalista -->
-    <footer class="border-t border-gray-200 bg-transparent py-40 relative z-10 w-full overflow-hidden">
+    <footer id="contact" class="border-t border-gray-200 bg-transparent py-40 relative z-10 w-full overflow-hidden">
         <div class="max-w-[1700px] mx-auto px-8 sm:px-10 flex flex-col uppercase font-black tracking-tighter">
             <div class="reveal-wrap w-full text-center">
                 <a href="mailto:victortedesco@gmail.com" data-cursor="copy" class="footer-link hover-target text-[6vw] sm:text-[5vw] md:text-[4rem] lg:text-[5.5rem] leading-[1.15] text-gray-900 inline-block w-full py-3 px-2">
@@ -707,6 +707,17 @@
         }
 
         } // ── fim initGSAP ──
+
+        // Scroll suave para links âncora internos (ex.: contato → footer)
+        document.addEventListener('click', (e) => {
+            const anchor = e.target.closest('a[href^="#"]');
+            if (!anchor) return;
+            const id = anchor.getAttribute('href').slice(1);
+            const targetEl = id && document.getElementById(id);
+            if (!targetEl) return;
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
 
         // Intercepta navegação para transição fluida
         document.addEventListener('click', (e) => {
