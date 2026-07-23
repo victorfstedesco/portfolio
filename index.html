@@ -203,7 +203,7 @@
     </header>
 
     <!-- Seção de Apresentação Hero -->
-    <main class="pt-8 pb-20 overflow-hidden">
+    <main class="pt-8 pb-20">
         <!-- Hero: Nome -->
         <section class="max-w-[1700px] mx-auto px-8 sm:px-10 relative min-h-[85vh] flex flex-col justify-center items-center">
             <div class="flex justify-center items-center flex-col w-full">
@@ -235,16 +235,21 @@
             </div>
         </div>
 
+        <!-- Seção Sobre: texto revela de claro para sólido ao entrar (sem travar o scroll) -->
+        <section id="intro" class="max-w-[1500px] mx-auto px-8 sm:px-10 min-h-[80vh] flex items-center justify-center py-32 sm:py-48">
+            <p class="intro-text max-w-[1150px] text-center text-[6.5vw] sm:text-[4.5vw] md:text-[3.4rem] lg:text-[4rem] leading-[1.15] font-bold tracking-tight">Oi, eu sou o Victor ✌️ product designer apaixonado por resolver problemas. Pego ideias complicadas e transformo em produtos simples, memoráveis e fáceis de amar 🤗</p>
+        </section>
+
         <!-- Container Limitador das linhas conectadas -->
-        <div class="w-full max-w-[1700px] mx-auto px-6 sm:px-10 my-20">
+        <div class="w-full max-w-[1700px] mx-auto px-6 sm:px-10 my-24 sm:my-32">
             <div class="bambo-line !my-0"></div>
         </div>
 
         <!-- Section: Mural de Palavras (Typography Specimen Wall) -->
-        <section id="about" class="max-w-[1700px] mx-auto px-8 sm:px-10 relative min-h-[85vh] flex flex-col justify-center items-center">
+        <section id="about" class="max-w-[1700px] mx-auto px-8 sm:px-10 relative min-h-[85vh] py-24 sm:py-40 flex flex-col justify-center items-center">
             <div class="w-full max-w-[1500px]">
                 <!-- Aviso de seção: some conforme a seção de stacks termina de rolar -->
-                <div class="cue-wrap w-full flex justify-center mb-8 sm:mb-12">
+                <div class="cue-wrap w-full flex justify-center mb-12 sm:mb-20">
                     <div class="scroll-cue cue-stacks flex items-center opacity-0">
                         <span class="text-[9px] sm:text-xs font-bold uppercase tracking-[0.2em] text-gray-500 whitespace-nowrap">minhas stacks</span>
                     </div>
@@ -266,19 +271,19 @@
     </main>
 
     <!-- Container Limitador das linhas conectadas -->
-    <div class="w-full max-w-[1700px] mx-auto px-6 sm:px-10 my-20">
+    <div class="w-full max-w-[1700px] mx-auto px-6 sm:px-10 my-24 sm:my-32">
         <div class="bambo-line !my-0"></div>
     </div>
 
     <!-- Lista de Projetos, renderizada via projects.json -->
-    <section id="work" class="max-w-[1100px] mx-auto px-7 sm:px-10 pt-24 pb-40">
+    <section id="work" class="max-w-[1100px] mx-auto px-7 sm:px-10 pt-40 sm:pt-56 pb-48 sm:pb-64">
         <!-- Aviso de seção: some conforme a seção de projetos termina de rolar -->
-        <div class="cue-wrap w-full flex justify-center mb-12 sm:mb-16">
+        <div class="cue-wrap w-full flex justify-center mb-16 sm:mb-24">
             <div class="scroll-cue cue-work flex items-center opacity-0">
                 <span class="text-[9px] sm:text-xs font-bold uppercase tracking-[0.2em] text-gray-500 whitespace-nowrap">produtos que desenvolvi</span>
             </div>
         </div>
-        <div id="projects-list" class="flex flex-col gap-8 md:gap-10">
+        <div id="projects-list" class="flex flex-col gap-16 md:gap-24">
             <!-- Cards gerados dinamicamente pelo JS -->
         </div>
     </section>
@@ -617,81 +622,69 @@
             }
         });
 
-        // 3. Line Separator Animation (Drawing the line as we scroll)
+        // ─── LINGUAGEM ÚNICA DE ENTRADA ──────────────────────────────────────
+        // Todas as seções usam o mesmo reveal: fade + subida curta, tempo FIXO e
+        // rápido, disparado uma vez ao aparecer. Nada preso ao scroll, então não
+        // "enrola" nem arrasta quando alguém rola rápido.
+        const REVEAL = { dur: 0.5, ease: 'power3.out', y: 28, start: 'top 85%' };
+
+        // 3. Linhas divisórias: desenham rápido ao entrar (tempo fixo)
         gsap.utils.toArray('.bambo-line').forEach(line => {
             gsap.to(line, {
                 width: '100%',
-                duration: 1.5,
-                ease: "power4.inOut",
-                scrollTrigger: {
-                    trigger: line,
-                    start: "top 95%",
-                    end: "top 60%",
-                    scrub: 1
-                }
+                duration: 0.8,
+                ease: 'power3.inOut',
+                scrollTrigger: { trigger: line, start: 'top 88%' }
             });
         });
 
-        // 4. Elegant Focus/Reveal Word Wall
-        // Initial state: elegant blur and slight scale/translate down
-        gsap.set('.word-item', { 
-            opacity: 0, 
-            y: 40,
-            scale: 0.9,
-            filter: "blur(12px)"
-        });
+        // 3.5 Sobre: texto revela palavra a palavra (claro → sólido), rápido, ao entrar
+        const introText = document.querySelector('.intro-text');
+        if (introText) {
+            const words = introText.textContent.trim().split(/\s+/);
+            introText.innerHTML = words
+                .map(w => `<span class="intro-word" style="color:#d4d4d8">${w}</span>`)
+                .join(' ');
+            gsap.to('.intro-word', {
+                color: '#111827',
+                ease: REVEAL.ease,
+                duration: 0.3,
+                stagger: 0.02,
+                scrollTrigger: { trigger: '#intro', start: 'top 70%' }
+            });
+        }
 
-        // Final state: smooth fade-in and focus
+        // 4. Word Wall (stacks): mesmo reveal
+        gsap.set('.word-item', { opacity: 0, y: REVEAL.y });
         gsap.to('.word-item', {
             opacity: 1,
             y: 0,
-            scale: 1,
-            filter: "blur(0px)",
-            duration: 1.2,
-            ease: "power3.out",
-            stagger: 0.04,
-            clearProps: "opacity,filter,transform",
-            scrollTrigger: {
-                trigger: ".word-wall",
-                start: "top 80%",
-            }
+            duration: REVEAL.dur,
+            ease: REVEAL.ease,
+            stagger: 0.035,
+            clearProps: 'opacity,transform',
+            scrollTrigger: { trigger: '.word-wall', start: REVEAL.start }
         });
 
-        // 5. Projects Reveal (The Masterpieces)
+        // 5. Projetos: mesmo reveal
         gsap.utils.toArray('.project-card').forEach(card => {
-            gsap.set(card, { clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' });
-
-            let tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top 85%",
-                }
+            gsap.from(card, {
+                opacity: 0,
+                y: REVEAL.y,
+                duration: REVEAL.dur,
+                ease: REVEAL.ease,
+                scrollTrigger: { trigger: card, start: 'top 88%' }
             });
-
-            tl.to(card, {
-                clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
-                duration: 1.2,
-                ease: "power4.inOut"
-            })
-            .from(card.querySelector('.project-inner'), {
-                scale: 1.15,
-                y: 30,
-                duration: 1.5,
-                ease: "power3.out"
-            }, "-=1");
         });
 
-        // 6. Footer Links Reveal
+        // 6. Footer Links: mesmo reveal das outras seções
         gsap.from('.footer-link', {
-            y: '130%',
-            rotation: 1.5,
-            duration: 1.2,
-            ease: "power4.out",
-            stagger: 0.15,
-            scrollTrigger: {
-                trigger: "footer",
-                start: "top 95%",
-            }
+            opacity: 0,
+            y: REVEAL.y,
+            duration: REVEAL.dur,
+            ease: REVEAL.ease,
+            stagger: 0.08,
+            scrollTrigger: { trigger: "footer", start: "top 90%" }
         });
 
         // Window load refresh
