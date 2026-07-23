@@ -1,230 +1,304 @@
 [
   {
-    "id": "caju",
-    "title": "CAJU",
-    "year": "2024",
-    "loaderLine1": "identidade visual",
-    "loaderLine2": "caju tropical",
-    "tags": "BRANDING • IDENTIDADE VISUAL • EMBALAGEM",
+    "id": "abbot",
+    "title": "ABBOTT",
+    "year": "2026",
+    "loaderLine1": "gestão de contas",
+    "loaderLine2": "abbott",
+    "tags": "INDÚSTRIA FARMACÊUTICA • EXPERIÊNCIA DO USUÁRIO • DESIGN SYSTEM",
     "meta": {
-      "client": "Caju Tropical",
-      "role": "Brand Designer",
-      "year": "2024",
-      "tools": "Figma, Illustrator"
-    },
-    "heroImage": {
-      "src": "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      "alt": "Branding Visual Assets Showcase"
-    },
-    "behance": "https://www.behance.net/victorfstedesco",
-    "card": {
-      "bgColor": "#fdf9e6",
-      "thumb": "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    },
-    "sections": [
-      {
-        "title": "O Conceito",
-        "content": [
-          {
-            "type": "paragraph",
-            "text": "Uma marca que une a riqueza tropical brasileira com elegância contemporânea, criando uma identidade que transmite autenticidade e sofisticação em cada ponto de contato."
-          }
-        ]
-      },
-      {
-        "title": "Construção da Marca",
-        "content": [
-          {
-            "type": "paragraph",
-            "lead": "Do símbolo à grelha.",
-            "text": "O logotipo foi construído a partir de uma grelha geométrica precisa, extraindo a forma do caju em um desenho minimalista e memorável que funciona em qualquer escala."
-          },
-          {
-            "type": "images",
-            "items": [
-              {
-                "src": "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "alt": "Grelha de Logo",
-                "ratio": "75%",
-                "description": "Grelha de construção do logotipo."
-              },
-              {
-                "src": "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "alt": "Aplicações de Papelaria",
-                "ratio": "75%",
-                "description": "Aplicação em papelaria corporativa."
-              }
-            ]
-          },
-          {
-            "type": "paragraph",
-            "lead": "O conceito por trás da marca.",
-            "text": "Caju Tropical é uma marca que celebra a brasilidade com elegância e sofisticação. O nome remete ao fruto tropical, enquanto a identidade visual transmite a essência vibrante e acolhedora do Brasil."
-          }
-        ]
-      },
-      {
-        "content": [
-          {
-            "type": "paragraph",
-            "text": "A marca foi aplicada em embalagens, papelaria corporativa e materiais digitais, mantendo coerência visual e impacto em todos os ambientes."
-          },
-          {
-            "type": "image",
-            "src": "https://images.unsplash.com/photo-1517502884422-41eaaced0168?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-            "alt": "Design de Embalagens",
-            "ratio": "45%",
-            "description": {
-              "lead": "Do conceito à prateleira.",
-              "text": "A embalagem final equilibra impacto visual e função, garantindo destaque no ponto de venda sem perder a leitura da marca."
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "aptr",
-    "title": "APTR",
-    "year": "2024",
-    "loaderLine1": "produto digital",
-    "loaderLine2": "aptr platform",
-    "tags": "UX/UI • PRODUTO DIGITAL • DESIGN SYSTEM",
-    "meta": {
-      "client": "APTR Platform",
+      "client": "Abbott",
       "role": "Product Designer",
-      "year": "2024",
-      "tools": "Figma, Protopie"
+      "year": "2026",
+      "tools": "Figma"
     },
     "heroImage": {
-      "src": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      "alt": "Dashboard APTR Mockup"
+      "src": "/assets/gestao-de-contas-abbot/cover.png",
+      "alt": "Gestão de Contas | Abbott"
     },
-    "behance": "https://www.behance.net/victorfstedesco",
     "card": {
-      "bgColor": "#f0f0f0",
-      "thumb": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      "bgColor": "#f0f0f5",
+      "thumb": "/assets/gestao-de-contas-abbot/cover.png"
     },
     "sections": [
       {
-        "title": "O Produto",
+        "title": "Controle disperso, decisão lenta",
         "content": [
           {
             "type": "paragraph",
-            "text": "Uma plataforma de gestão de dados que simplifica fluxos complexos através de uma interface intuitiva e um design system robusto, reduzindo a curva de aprendizado em 60%."
+            "text": "Os representantes da Abbott gerenciavam contas, hospitais e clínicas parceiras, sem um sistema central. Parte do processo vivia em planilhas soltas, parte não tinha controle nenhum. O resultado era falta de visibilidade em tempo real sobre a demanda de cada conta, o histórico de visitas e o progresso das metas."
+          },
+          {
+            "type": "paragraph",
+            "lead": "Centralizar.",
+            "text": "reunir todas as contas parceiras e suas redes em um único lugar, com busca e agrupamento."
+          },
+          {
+            "type": "paragraph",
+            "lead": "Dar visibilidade.",
+            "text": "mostrar a demanda de cada parceiro em diferentes recortes de tempo (MAT, YTD, QRT e MTH)."
+          },
+          {
+            "type": "paragraph",
+            "lead": "Rastrear relacionamento.",
+            "text": "manter o histórico de visitas a médicos e stakeholders de cada conta."
+          },
+          {
+            "type": "paragraph",
+            "lead": "Guiar a ação.",
+            "text": "permitir criar e acompanhar planos para atingir a meta de cada parceiro."
           }
         ]
       },
       {
-        "title": "Estratégia de UX",
+        "title": "Tudo o que importa, em um só lugar",
         "content": [
           {
             "type": "paragraph",
-            "text": "A experiência foi mapeada a partir de pesquisas com usuários, identificando os principais gargalos nos fluxos de gestão e priorizando ações de alto impacto."
+            "text": "O painel do parceiro reúne o que o representante mais precisa acompanhar: valores em MAT, YTD, QRT e MTH com variação, evolução mensal da demanda, últimas visitas médicas, plano de ação e desempenho por produto, organizados por prioridade de leitura, sem necessidade de alternar entre telas."
+          },
+          {
+            "type": "image",
+            "src": "/assets/gestao-de-contas-abbot/visao-geral.png",
+            "alt": "Visão Geral do Parceiro",
+            "ratio": "56%",
+            "description": "Tudo em um scroll."
+          }
+        ]
+      },
+      {
+        "title": "O dado como protagonista",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Na aba de Demanda, o representante aprofunda a análise: compara produtos mês a mês ou por distribuidor, filtra por especialidade médica e cruza com a tabela completa de valores no MAT. A premissa foi simples: não esconder o dado atrás de uma visualização decorativa."
           },
           {
             "type": "images",
             "items": [
               {
-                "src": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "alt": "Interface Web",
-                "ratio": "75%",
-                "description": "Dashboard principal."
+                "src": "/assets/gestao-de-contas-abbot/detalhamentos-demanda-1.png",
+                "alt": "Demanda | comparação por produto",
+                "ratio": "56%",
+                "description": "Comparação por produto e distribuidor."
               },
               {
-                "src": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "alt": "Versão Mobile",
-                "ratio": "75%",
-                "description": "Versão mobile responsiva."
+                "src": "/assets/gestao-de-contas-abbot/detalhamentos-demanda-2.png",
+                "alt": "Demanda | especialidades e plano de ação",
+                "ratio": "56%",
+                "description": "Especialidades e valores no MAT."
               }
             ]
           }
         ]
       },
       {
-        "title": "Design System",
+        "title": "Consistência através de componentes",
         "content": [
           {
             "type": "paragraph",
-            "text": "Construção de um sistema de componentes escalável, com tokens de design e documentação completa para garantir consistência entre design e desenvolvimento."
+            "text": "Para sustentar a velocidade do time e manter consistência entre as telas, construí uma biblioteca de componentes reutilizáveis (cards de indicador, listas, filtros e tags de status), documentados com seus estados e variações."
           },
           {
             "type": "image",
-            "src": "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-            "alt": "Componentes de UI",
-            "ratio": "45%",
-            "description": {
-              "lead": "Consistência em escala.",
-              "text": "A biblioteca de componentes reduziu o retrabalho entre design e desenvolvimento em todo o produto."
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "fabrica",
-    "title": "FABRICA",
-    "year": "2023",
-    "loaderLine1": "landing page",
-    "loaderLine2": "fabrica corp",
-    "tags": "LANDING PAGE • WEB DESIGN • CRO",
-    "meta": {
-      "client": "Fabrica Corp",
-      "role": "Web Designer",
-      "year": "2023",
-      "tools": "Figma, Webflow"
-    },
-    "heroImage": {
-      "src": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-      "alt": "SaaS Landing Page Mockup"
-    },
-    "behance": "https://www.behance.net/victorfstedesco",
-    "card": {
-      "bgColor": "#dcdcdc",
-      "thumb": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    },
-    "sections": [
-      {
-        "title": "O Projeto",
-        "content": [
-          {
-            "type": "paragraph",
-            "text": "Uma landing page de alta conversão para uma plataforma SaaS B2B, com foco em velocidade de carregamento e clareza de proposta de valor desde o primeiro scroll."
+            "src": "/assets/gestao-de-contas-abbot/design-system.png",
+            "alt": "Design System | componentes",
+            "ratio": "56%",
+            "description": "Alguns componentes do sistema"
           }
         ]
       },
       {
         "title": "Resultados",
         "content": [
-          { "type": "paragraph", "lead": "94.2%", "text": "taxa de satisfação dos usuários." },
-          { "type": "paragraph", "lead": "98/100", "text": "no Google PageSpeed Score." },
-          { "type": "paragraph", "lead": "12K+", "text": "leads gerados no primeiro mês." }
+          {
+            "type": "paragraph",
+            "lead": "De nada a um hub.",
+            "text": "antes os representantes não tinham nada centralizado; hoje têm toda a informação da conta na palma da mão."
+          },
+          {
+            "type": "paragraph",
+            "lead": "Retorno do time.",
+            "text": "o feedback foi de uma ferramenta agradável de usar e eficiente no dia a dia."
+          }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "id": "emed",
+    "title": "EMED",
+    "year": "2026",
+    "loaderLine1": "gestão acadêmica",
+    "loaderLine2": "emed",
+    "tags": "EDUCAÇÃO • GESTÃO ACADÊMICA • DESIGN SYSTEM",
+    "meta": {
+      "client": "SENAC",
+      "role": "Product Designer",
+      "year": "2026",
+      "tools": "Figma"
+    },
+    "heroImage": {
+      "src": "/assets/emed/cover.png",
+      "alt": "EMED, sistema de gestão acadêmica do SENAC"
+    },
+    "card": {
+      "bgColor": "#f0f0f5",
+      "thumb": "/assets/emed/cover.png"
+    },
+    "sections": [
       {
-        "title": "Estratégia Visual e Performance",
+        "title": "Duas pontas, nenhum sistema",
         "content": [
           {
             "type": "paragraph",
-            "text": "A hierarquia visual foi projetada para guiar o olhar do visitante da proposta de valor ao CTA principal em menos de 3 segundos de leitura. Micro-animações estratégicas aumentam o engajamento sem prejudicar a performance, mantendo o Lighthouse Score acima de 95."
+            "text": "O SENAC precisava de um sistema de gestão acadêmica para professores e administradores. Parte do processo era manual, feito em planilhas; parte simplesmente não existia como fluxo formal. Professores não tinham uma forma unificada de gerenciar turmas, notas e chamada, e a administração não tinha controle centralizado sobre usuários, importação de dados e alocação de alunos."
+          }
+        ]
+      },
+      {
+        "title": "Módulo Professor",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Do lado do professor, o sistema cobre a rotina da sala de aula: agenda da semana, chamada, lançamento de notas e acompanhamento de projetos de longo prazo. O objetivo era reduzir a quantidade de cliques entre uma tarefa e outra, já que essas ações se repetem todos os dias."
+          }
+        ]
+      },
+      {
+        "title": "Agenda da semana",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "A visão de turmas parte do calendário, não de uma lista. O dia atual fica destacado em azul na primeira coluna, e cada aula aparece como um cartão com a matéria e o ano da turma em uma tag colorida, para que o professor identifique a próxima aula em poucos segundos."
           },
           {
-            "type": "images",
-            "items": [
-              {
-                "src": "https://images.unsplash.com/photo-1547119944-472561214a11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "alt": "Página Responsiva",
-                "ratio": "75%",
-                "description": "Design responsivo — mobile first."
-              },
-              {
-                "src": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "alt": "Detalhes Visuais",
-                "ratio": "75%",
-                "description": "Detalhes visuais e tipografia."
-              }
-            ]
+            "type": "image",
+            "src": "/assets/emed/gerenciamento-de-turmas.png",
+            "alt": "Agenda semanal de turmas",
+            "ratio": "56%",
+            "description": "Calendário semanal com o dia atual em destaque."
+          }
+        ]
+      },
+      {
+        "title": "Registro de chamada",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "A chamada usa um seletor numerado por etapa da aula em vez de um simples check de presença, o que permite registrar a participação em diferentes momentos da aula, não só a entrada. A frequência calculada aparece ao lado, e turmas sem histórico mostram \"Sem dados\" em vez de um espaço em branco."
+          },
+          {
+            "type": "image",
+            "src": "/assets/emed/registro-chamadas.png",
+            "alt": "Registro de chamada por turma",
+            "ratio": "56%",
+            "description": "Participação por etapa da aula e frequência calculada."
+          }
+        ]
+      },
+      {
+        "title": "Lançamento de notas",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "As notas seguem o modelo de menções do SENAC (D, ND, ED) em vez de números, então cada célula é um seletor de tags coloridas. Só o bimestre em andamento mostra as três opções lado a lado; bimestres já lançados mostram apenas o valor final, e os futuros aparecem como \"Não iniciado\". Um painel lateral guarda o histórico de alterações de cada aluno, com o valor anterior e a data da mudança."
+          },
+          {
+            "type": "image",
+            "src": "/assets/emed/lancamento-notas.png",
+            "alt": "Lançamento de notas por menções",
+            "ratio": "56%",
+            "description": "Seletor de menções por bimestre e histórico de alterações."
+          }
+        ]
+      },
+      {
+        "title": "Projeto de ano",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Os projetos de longo prazo reaproveitam o mesmo padrão de participação e frequência da chamada comum, para que o professor não precise aprender uma interface nova. A diferença é o painel de contexto: de um lado a descrição do encontro atual, em edição; do outro, o relatório do encontro anterior, como referência, sem precisar trocar de tela."
+          },
+          {
+            "type": "image",
+            "src": "/assets/emed/gerenciamento-projeto-de-ano.png",
+            "alt": "Gerenciamento de projeto de ano",
+            "ratio": "56%",
+            "description": "Encontro atual e relatório anterior lado a lado."
+          }
+        ]
+      },
+      {
+        "title": "Módulo Administrador",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Do lado da administração, o sistema centraliza a entrada de dados em escala: importar planilhas de professores e alunos, corrigir erros de importação, alocar alunos entre turmas e gerenciar permissões de usuário."
+          }
+        ]
+      },
+      {
+        "title": "Importação de planilhas",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "A importação em massa segue um assistente de quatro etapas (professores, alunos, turmas, unificação), com indicador de progresso sempre visível. Antes de qualquer envio, um aviso explica que a planilha precisa seguir os parâmetros do banco de dados, com um link direto para o modelo correto, prevenindo o erro antes que ele aconteça."
+          },
+          {
+            "type": "image",
+            "src": "/assets/emed/importacao-de-planilha.png",
+            "alt": "Importação de planilha em etapas",
+            "ratio": "56%",
+            "description": "Assistente de importação em quatro etapas."
+          }
+        ]
+      },
+      {
+        "title": "Validação de dados importados",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Depois do envio, cada arquivo importado aparece como um cartão com seu próprio estado: sucesso, erro de conteúdo ou tabela fora do padrão. Nos casos com erro, as células problemáticas ficam destacadas em vermelho direto na tabela, em vez de uma mensagem genérica de falha, para que o administrador saiba exatamente o que corrigir."
+          },
+          {
+            "type": "image",
+            "src": "/assets/emed/validar-tabela-importada.png",
+            "alt": "Validação de tabela importada com erros destacados",
+            "ratio": "56%",
+            "description": "Erros de importação destacados célula a célula."
+          }
+        ]
+      },
+      {
+        "title": "Alocação por preferência",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Na separação de alunos por turma, cada preferência declarada vira uma tag colorida (de \"Amo esse(a)\" a \"Não gostaria\"), facilitando a leitura em lista longa. Ao mover um aluno para outro professor, o modal já mostra a preferência daquele professor pelo aluno e as vagas disponíveis, para que a decisão de realocar não exija consultar outra tela."
+          },
+          {
+            "type": "image",
+            "src": "/assets/emed/importar-alunos-para-responsavel.png",
+            "alt": "Alocação de alunos por preferência",
+            "ratio": "56%",
+            "description": "Preferência e vagas visíveis no momento da troca."
+          }
+        ]
+      },
+      {
+        "title": "Gerenciamento de usuários",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Cada usuário abre um painel de detalhe sem sair da lista, com suas turmas e projetos vinculados. Ações sensíveis, como promover a administrador ou desativar um usuário, ficam sempre acompanhadas de uma linha explicando a consequência, para reduzir erro por clique acidental."
+          },
+          {
+            "type": "image",
+            "src": "/assets/emed/gerenciamento-usuarios.png",
+            "alt": "Gerenciamento de usuários",
+            "ratio": "56%",
+            "description": "Painel de detalhe com turmas, projetos e permissões."
           }
         ]
       },
@@ -232,17 +306,7 @@
         "content": [
           {
             "type": "paragraph",
-            "text": "Posicionamento de CTAs baseado em heatmaps e testes A/B, resultando em um aumento de 34% na taxa de conversão em 60 dias."
-          },
-          {
-            "type": "image",
-            "src": "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-            "alt": "Hero Close-up",
-            "ratio": "45%",
-            "description": {
-              "lead": "Hero section.",
-              "text": "Close-up da seção principal, otimizada para comunicar o produto em menos de 5 segundos."
-            }
+            "text": "Professor e administrador usam o sistema de formas bem diferentes, mas os mesmos padrões de interface aparecem nos dois módulos. Foi essa repetição que manteve o sistema fácil de aprender, mesmo cobrindo tarefas tão distintas."
           }
         ]
       }

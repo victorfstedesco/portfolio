@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto — Victor Tedesco</title>
+    <title>Case de Projeto | Victor Tedesco</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/minivictor.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -225,7 +226,7 @@
 
         <!-- Ficha Técnica -->
         <div class="w-full max-w-[1700px] mx-auto px-8 sm:px-10 mt-12">
-            <div class="border-t border-b border-gray-200 py-10">
+            <div class="border-t border-b border-gray-200 py-16">
                 <div class="max-w-[1500px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
                     <div class="meta-item">
                         <p class="text-xs uppercase text-gray-400 font-bold tracking-wider mb-2">Cliente</p>
@@ -256,7 +257,7 @@
             </div>
         </section>
 
-        <!-- Blocos de conteúdo — gerados dinamicamente a partir do JSON -->
+        <!-- Blocos de conteúdo, gerados dinamicamente a partir do JSON -->
         <div id="blocks-container"></div>
 
         <!-- Divisor -->
@@ -404,11 +405,9 @@
             const lead = typeof description === 'object' ? description.lead : '';
             const text = typeof description === 'object' ? description.text : description;
             return `
-                <div class="mt-4 pl-6 border-l-2 border-gray-900 max-w-2xl">
-                    <p class="text-base sm:text-lg text-gray-800 leading-relaxed font-light">
-                        ${lead ? `<span class="font-bold text-gray-900">${lead} </span>` : ''}${text || ''}
-                    </p>
-                </div>`;
+                <p class="mt-3 text-xs sm:text-sm text-gray-400 tracking-wide max-w-2xl">
+                    ${lead ? `<span class="text-gray-600 font-medium">${lead} </span>` : ''}${text || ''}
+                </p>`;
         }
 
         function renderImage(img) {
@@ -475,7 +474,7 @@
         }
 
         function populateData(project, all) {
-            document.title = `${project.title} — Victor Tedesco`;
+            document.title = `${project.title} | Victor Tedesco`;
 
             const loaderTexts = document.querySelectorAll('.loader-text');
             if (loaderTexts[0]) loaderTexts[0].textContent = project.loaderLine1 || '';
